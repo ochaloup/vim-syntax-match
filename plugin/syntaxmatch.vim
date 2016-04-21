@@ -5,8 +5,8 @@ endif
 augroup SyntaxMatch
   autocmd!
 
-  autocmd! BufEnter,BufRead * :call syntaxmatch#syntaxFileExecute()
-  autocmd! BufDelete,BufLeave,BufWipeout,BufUnload * :call syntaxmatch#saveSyntax()
+  autocmd! BufRead * :call syntaxmatch#syntaxFileExecute()
+  autocmd! BufWrite,BufDelete,BufLeave,BufWipeout,BufUnload * :call syntaxmatch#saveSyntax()
 augroup END
 
 " for being able to use defined colors
