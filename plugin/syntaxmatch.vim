@@ -7,7 +7,9 @@ augroup SyntaxMatch
 
   " a hack from: http://stackoverflow.com/questions/6496778/vim-run-autocmd-on-all-filetypes-except
   " to match all exept of syntax files - what is syntax file is defined under ftdetect folder
-  autocmd BufWritePre * if index(['syntaxmatch'], &ft) < 0 | :call syntaxmatch#syntaxFileExecute()
+  " autocmd BufWritePre * if index(['syntaxmatch'], &ft) < 0 | :call syntaxmatch#syntaxFileExecute()
+  
+  autocmd BufWritePre *.log,*.txt :call syntaxmatch#syntaxFileExecute()
   autocmd! BufWrite,BufDelete,BufLeave,BufWipeout,BufUnload * :call syntaxmatch#saveSyntax()
 augroup END
 
