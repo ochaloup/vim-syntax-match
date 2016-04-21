@@ -1,13 +1,15 @@
 
+" saving syntax to a file named by predefined name
 function! syntaxmatch#saveSyntax()
   let l:syntax = s:getSyntaxCommands()
   let l:syntaxfile = s:getSyntaxFile()
   
-  if !filewritable(l:syntaxfile)
+  echo "Syntax file is: " . l:syntaxfile 
+  if filewritable(s:getSyntaxDir()) != 2
     return
   endif
 
-  " echo "Syntax file is: " . l:syntaxfile . " and syntax is " . join(l:syntax, '|')
+  "echo "Syntax file is: " . l:syntaxfile . " and syntax is " . join(l:syntax, '|')
   execute 'redir! >' . l:syntaxfile
   silent! echo join(l:syntax, "\n")
   execute 'redir END'
@@ -36,6 +38,8 @@ function! syntaxmatch#syntaxFileExecute()
 endfunction
 
 
+
+"
 " ==================================
 " ===== Script local functions =====
 " ==================================
@@ -121,10 +125,15 @@ endfunction
 "
 " getting path to current file and adding prefix and sufix
 function! s:getSyntaxFile()
-  let l:curdir = expand("%:p:h")
+  let l:curdir = s:getSyntaxDir()
   let l:curfile = expand("%:t")
   let l:syntaxfile = l:curdir . '/' . '.' . l:curfile . '.syntax' 
   return l:syntaxfile
+endfunction
+
+" getting path to current file and return its directory
+function! s:getSyntaxDir()
+  return expand("%:p:h")
 endfunction
 
 function! s:isFileExists(filename)

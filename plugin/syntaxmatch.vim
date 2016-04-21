@@ -8,14 +8,17 @@ augroup SyntaxMatch
   " a hack from: http://stackoverflow.com/questions/6496778/vim-run-autocmd-on-all-filetypes-except
   " to match all exept of syntax files - what is syntax file is defined under ftdetect folder
   " autocmd BufWritePre * if index(['syntaxmatch'], &ft) < 0 | :call syntaxmatch#syntaxFileExecute()
-  
-  autocmd BufWritePre *.log,*.txt :call syntaxmatch#syntaxFileExecute()
-  autocmd! BufWrite,BufDelete,BufLeave,BufWipeout,BufUnload * :call syntaxmatch#saveSyntax()
+
+  autocmd! BufWrite,BufDelete,BufLeave,BufWipeout,BufUnload  *.log  :call syntaxmatch#saveSyntax()
+  autocmd! BufRead * :call syntaxmatch#syntaxFileExecute()
 augroup END
+
 
 " for being able to use defined colors
 syntax on
 colorscheme syntaxmatch
+
+command! SaveSyntax         call syntaxmatch#saveSyntax()
 
 command! -nargs=1 Yellow    syntax match yellow <f-args>
 command! -nargs=1 Yellow2   syntax match yellow2 <f-args>
