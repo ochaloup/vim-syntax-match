@@ -1,0 +1,402 @@
+
+syntax match rubyBlockParameter /\%(\h\|[^\x00-\x7F]\)\%(\w\|[^\x00-\x7F]\)*/  contained
+syntax match vimMenuBang /!/  contained nextgroup=@vimMenuList skipwhite
+syntax match vimSynContains /\<contain\(s\|edin\)=/  contained nextgroup=vimGroupList
+syntax match perlStatementList /\<\%(splice\|unshift\|shift\|push\|pop\|join\|reverse\|grep\|map\|sort\|unpack\)\>/  contained
+syntax match vimMapLhs /\S\+/  contained contains=vimNotation,vimCtrlChar nextgroup=vimMapRhs skipwhite
+syntax match vimFiletype /\<filet\%[ype]\(\s\+\I\i*\)*/  contains=vimFTCmd,vimFTOption,vimFTError
+syntax match vimGroupAdd /add=/  contained nextgroup=vimGroupList
+syntax match perlFiledescRead /<\h\w*>/  contained
+syntax match rubyMethodExceptional /\<\%(\%(\%(;\|^\)\s*\)\@<=rescue\|else\|ensure\)\>[?!]\@!/  contained containedin=rubyMethodBlock
+syntax match podSpecial /\(\<\|&\)\I\i*\(::\I\i*\)*([^)]*)/  contained contains=@NoSpell
+syntax match podSpecial /[$@%]\I\i*\(::\I\i*\)*\>/  contained contains=@NoSpell
+syntax match luaLabel /::\I\i*::/  contained
+syntax match vimSyncLines /\(min\|max\)\=lines=/  contained nextgroup=vimNumber
+syntax match vimGroupList /@\=[^ \t,]*/  contained contains=vimGroupSpecial,vimPatSep
+syntax match vimGroupList /@\=[^ \t,]*,/  contained contains=vimGroupSpecial,vimPatSep nextgroup=vimGroupList
+syntax match vimSyncGroupName /\h\w*/  contained nextgroup=vimSyncKey skipwhite
+syntax match vimEchoHL /echohl\=/  nextgroup=vimGroup,vimHLGroup,vimEchoHLNone skipwhite
+syntax match vimBehave /\<be\%[have]\>/  nextgroup=vimBehaveModel,vimBehaveError skipwhite
+syntax match perlStatementInclude /\<\%(require\|import\)\>/  contained
+syntax match perlStatementInclude /\<\%(use\|no\)\s\+\%(\%(attributes\|attrs\|autouse\|parent\|base\|big\%(int\|num\|rat\)\|blib\|bytes\|charnames\|constant\|diagnostics\|encoding\%(::warnings\)\=\|feature\|fields\|filetest\|if\|integer\|less\|lib\|locale\|mro\|open\|ops\|overload\|re\|sigtrap\|sort\|strict\|subs\|threads\%(::shared\)\=\|utf8\|vars\|version\|vmsish\|warnings\%(::register\)\=\)\>\)\=/  contained
+syntax match rubyAliasDeclaration /[^[:space:];#.()]\+/  contained contains=rubySymbol,rubyGlobalVariable,rubyPredefinedVariable nextgroup=rubyAliasDeclaration2 skipwhite
+syntax match rubyExceptional /\<\%(\%(\%(;\|^\)\s*\)\@<=rescue\|else\|ensure\)\>[?!]\@!/  contained containedin=rubyBlockExpression
+syntax match vimSynCaseError /\i\+/  contained
+syntax match rubyInvalidVariable /$[^ A-Za-z_-]/  contained
+syntax match perlStatementSocket /\<\%(accept\|bind\|connect\|get\%(peername\|sock\%(name\|opt\)\)\|listen\|recv\|send\|setsockopt\|shutdown\|socket\%(pair\)\=\)\>/  contained
+syntax match vimHiCtermFgBg /\ccterm[fb]g=/he=e-1  contained nextgroup=vimHiNmbr,vimHiCtermColor,vimFgBgAttrib,vimHiCtermError
+syntax match perlFormatField /[@^][|<>~]\+\%(\.\.\.\)\=/  contained
+syntax match perlFormatField /[@^]#[#.]*/  contained
+syntax match perlFormatField /@\*/  contained
+syntax match perlFormatField /@[^A-Za-z_|<>~#*]/me=e-1  contained
+syntax match perlFormatField /@$/  contained
+syntax match perlComment /#.*/  contained extend contains=perlTodo,@Spell
+syntax match vimHiCtermError /[^0-9]\i*/  contained
+syntax match vimHighlight /\<hi\%[ghlight]\>/  nextgroup=vimHiBang,@vimHighlightCluster skipwhite
+syntax match podVerbatimLine /^\s.*$/  contained contains=@NoSpell
+syntax match vimSetSep /[,:]/  contained nextgroup=vimCommand skipwhite
+syntax match vimCommentTitle /"\s*\%([sS]:\|\h\w*#\)\=\u\w*\(\s\+\u\w*\)*:/hs=s+1  contained contains=vimCommentTitleLeader,vimTodo,@vimCommentGroup
+syntax match perlPackageRef /[$@#%*&]\%(\%(::\|'\)\=\I\i*\%(\%(::\|'\)\I\i*\)*\)\=\%(::\|'\)\I/ms=s+1,me=e-1  contained
+syntax match rubyComment /#.*/  contained contains=rubySharpBang,rubySpaceError,rubyTodo,@Spell
+syntax match vimSynError /\i\+/  contained
+syntax match vimSynError /\i\+=/  contained nextgroup=vimGroupList
+syntax match vimElseIfErr /\<else\s\+if\>/
+syntax match vimNumber /\<\d\+\%(\.\d\+\%([eE][+-]\=\d\+\)\=\)\=/  nextgroup=vimGlobal,vimSubst,vimCommand skipwhite
+syntax match vimNumber /-\d\+\%(\.\d\+\%([eE][+-]\=\d\+\)\=\)\=/  nextgroup=vimGlobal,vimSubst,vimCommand skipwhite
+syntax match vimNumber /\<0[xX]\x\+/
+syntax match vimNumber /\%(^\|[^a-zA-Z]\)\zs#\x\{6}/
+syntax match perlStatementMisc /\<\%(warn\|format\|formline\|reset\|scalar\|prototype\|lock\|tied\=\|untie\)\>/  contained
+syntax match pythonComment /#.*$/  contained contains=pythonTodo,@Spell
+syntax match rubyBeginEnd /\<\%(BEGIN\|END\)\>[?!]\@!/  contained
+syntax match vimSpecFile /<c\(word\|WORD\)>/  nextgroup=vimSpecFileMod,vimSubst
+syntax match vimSpecFile /<\([acs]file\|amatch\|abuf\)>/  nextgroup=vimSpecFileMod,vimSubst
+syntax match vimSpecFile /\s%[ \t:]/ms=s+1,me=e-1  nextgroup=vimSpecFileMod,vimSubst
+syntax match vimSpecFile /\s%$/ms=s+1  nextgroup=vimSpecFileMod,vimSubst
+syntax match vimSpecFile /\s%</ms=s+1,me=e-1  nextgroup=vimSpecFileMod,vimSubst
+syntax match vimSpecFile /#\d\+\|[#%]<\>/  nextgroup=vimSpecFileMod,vimSubst
+syntax match rubyStringEscape /\\\\\|\\[abefnrstv]\|\\\o\{1,3}\|\\x\x\{1,2}/  display contained
+syntax match rubyStringEscape /\%(\\M-\\C-\|\\C-\\M-\|\\M-\\c\|\\c\\M-\|\\c\|\\C-\|\\M-\)\%(\\\o\{1,3}\|\\x\x\{1,2}\|\\\=\S\)/  display contained
+syntax match perlFiledescStatement /\u\w*/  contained
+syntax match vimSynNextgroup /nextgroup=/  contained nextgroup=vimGroupList
+syntax match perlVarSimpleMember /\%(->\)\={\s*\I\i*\s*}/  contained extend contains=perlVarSimpleMemberName nextgroup=perlVarMember,perlVarSimpleMember,perlMethod
+syntax match vimIskList /\S\+/  contained contains=vimIskSep
+syntax match vimLineComment /^[ \t:]*".*$/  contains=@vimCommentGroup,vimCommentString,vimCommentTitle
+syntax match pythonAttribute /\.\h\w*/hs=s+1  contained transparent contains=ALLBUT,pythonBuiltin
+syntax match rubyRegexpQuantifier /[*?+][?+]\=/  display contained
+syntax match rubyRegexpQuantifier /{\d\+\%(,\d*\)\=}?\=/  display contained
+syntax match vimSubstFlags /[&cegiIpr]\+/  contained
+syntax match perlConditional /\<\%(if\|elsif\|unless\|given\|when\|default\)\>/  contained
+syntax match perlConditional /\<else\%(\%(\_s\*if\>\)\|\>\)/  contained contains=perlElseIfError
+syntax match vimAutoCmdSfxList /\S*/  contained
+syntax match rubyClassVariable /@@\%(\h\|[^\x00-\x7F]\)\%(\w\|[^\x00-\x7F]\)*/  display contained
+syntax match vimMenuMap /\s/  contained nextgroup=vimMenuRhs skipwhite
+syntax match rubyPseudoVariable /\<\%(nil\|self\|__ENCODING__\|__FILE__\|__LINE__\|__callee__\|__method__\)\>[?!]\@!/  contained
+syntax match perlSpecialString /\\\%(\o\{1,3}\|x\%({\x\+}\|\x\{1,2}\)\|c.\|[^cx]\)/  contained extend
+syntax match vimMarkNumber /[-+]\d\+/  contained contains=vimOper nextgroup=vimSubst
+syntax match perlFiledescStatementNocomma /(\=\s*\u\w*\s*[^, \t]/me=e-1  contained transparent contains=perlFiledescStatement
+syntax match vimStringCont /\(\\\\\|.\)\{-}[^\\]"/  contained
+syntax match vimCmdSep /[:|]\+/  nextgroup=vimAddress,vimAutoCmd,vimIsCommand,vimExtCmd,vimFilter,vimLet,vimMap,vimMark,vimSet,vimSyntax,vimUserCmd skipwhite
+syntax match vimHiGroup /\i\+/  contained
+syntax match pythonEscape /\\[abfnrtv'"\\]/  contained
+syntax match pythonEscape /\\\o\{1,3}/  contained
+syntax match pythonEscape /\\x\x\{2}/  contained
+syntax match pythonEscape /\%(\\u\x\{4}\|\\U\x\{8}\)/  contained
+syntax match pythonEscape /\\N{\a\+\%(\s\a\+\)*}/  contained
+syntax match pythonEscape /\\$/  contained
+syntax match perlVarPlain2 /%\$*\%(\I\i*\)\=\%(\%(::\|'\)\I\i*\)*\%(::\|\i\@<=\)/  contained contains=perlPackageRef
+syntax match perlVarPlain2 /[%&*]\$*{\I\i*}/  contained extend nextgroup=perlVarMember,perlVarSimpleMember,perlMethod
+syntax match rubyInstanceVariable /@\%(\h\|[^\x00-\x7F]\)\%(\w\|[^\x00-\x7F]\)*/  display contained
+syntax match perlPackageDecl /\<package\s\+\%(\h\|::\)\%(\w\|::\)*/  contained contains=perlStatementPackage
+syntax match vimSubstFlagErr /[^< \t\r|]\+/  contained contains=vimSubstFlags
+syntax match perlLabel /^\s*\h\w*\s*::\@!\%(\<v\d\+\s*:\)\@<!/  contained
+syntax match perlVarSimpleMemberName /\I\i*/  contained
+syntax match perlControl /\<\%(BEGIN\|CHECK\|INIT\|END\|UNITCHECK\)\>\_s*/  contained nextgroup=perlFakeGroup
+syntax match vimSyntax /\<sy\%[ntax]\>/  contains=vimCommand nextgroup=vimSynType,vimComment skipwhite
+syntax match rubyConditionalModifier /\<\%(if\|unless\)\>/  display contained
+syntax match vimSubst /\(:\+\s*\|^\s*\||\s*\)\<\%(s\%[ubstitute]\|sm\%[agic]\|sno\%[magic]\)[:[:alpha:]]\@!/  nextgroup=vimSubstPat
+syntax match vimSubst /\%(^\|[^\\]\)s\%[ubstitute][:#[:alpha:]]\@!/  contained nextgroup=vimSubstPat
+syntax match vimSubst +/\zss\%[ubstitute]\ze/+  nextgroup=vimSubstPat
+syntax match rubyControl /\<\%(and\|break\|in\|next\|not\|or\|redo\|rescue\|retry\|return\)\>[?!]\@!/  contained
+syntax match rubyControl /\<\%(exit!\|\%(abort\|at_exit\|exit\|fork\|loop\|trap\)\>[?!]\@!\)/  contained
+syntax match rubyConditional /\<\%(then\|else\|when\)\>[?!]\@!/  contained containedin=rubyCaseExpression
+syntax match rubyConditional /\<\%(then\|else\|elsif\)\>[?!]\@!/  contained containedin=rubyConditionalExpression
+syntax match vimSynMtchGrp /matchgroup=/  contained nextgroup=vimGroup,vimHLGroup
+syntax match vimMenuPriority /\d\+\(\.\d\+\)*/  contained nextgroup=vimMenuName skipwhite
+syntax match perlStatementIOfunc /\<\%(syscall\|dbmopen\|dbmclose\)\>/  contained
+syntax match rubyRegexpEscape =\\[].*?+^$|\\/(){}[]=  contained
+syntax match vimHiGui /\cgui=/he=e-1  contained nextgroup=vimHiAttribList
+syntax match vimFilter /^!.\{-}\(|\|$\)/  contained contains=vimSpecFile
+syntax match vimFilter /\A!.\{-}\(|\|$\)/ms=s+1  contained contains=vimSpecFile,vimFunction,vimFuncName,vimOperParen
+syntax match perlFunction /\<sub\>\_s*/  contained nextgroup=perlSubName
+syntax match vimUserAttrb /-nargs=[01*?+]/  contained contains=vimUserAttrbKey,vimOper
+syntax match vimUserAttrb /-complete=/  contained contains=vimUserAttrbKey,vimOper nextgroup=vimUserAttrbCmplt,vimUserCmdError
+syntax match vimUserAttrb /-range\(=%\|=\d\+\)\=/  contained contains=vimNumber,vimOper,vimUserAttrbKey
+syntax match vimUserAttrb /-count\(=\d\+\)\=/  contained contains=vimNumber,vimOper,vimUserAttrbKey
+syntax match vimUserAttrb /-bang\>/  contained contains=vimOper,vimUserAttrbKey
+syntax match vimUserAttrb /-bar\>/  contained contains=vimOper,vimUserAttrbKey
+syntax match vimUserAttrb /-buffer\>/  contained contains=vimOper,vimUserAttrbKey
+syntax match vimUserAttrb /-register\>/  contained contains=vimOper,vimUserAttrbKey
+syntax match vimSetMod /&vim\=\|[!&?<]\|all&/  contained
+syntax match vimHiGuiRgb /#\x\{6}/  contained
+syntax match vimSubst1 /s\%[ubstitute]\>/  contained nextgroup=vimSubstPat
+syntax match vimIskSep /,/  contained
+syntax match rubySymbol #[]})\"':]\@<!:\%(\^\|\~\|<<\|<=>\|<=\|<\|===\|[=!]=\|[=!]\~\|!\|>>\|>=\|>\||\|-@\|-\|/\|\[]=\|\[]\|\*\*\|\*\|&\|%\|+@\|+\|`\)#  contained
+syntax match rubySymbol #[]})\"':]\@<!:\$\%(-.\|[`~<=>_,;:!?/.'"@$*\&+0]\)#  contained
+syntax match rubySymbol /[]})\"':]\@<!:\%(\$\|@@\=\)\=\%(\h\|[^\x00-\x7F]\)\%(\w\|[^\x00-\x7F]\)*/  contained
+syntax match rubySymbol /[]})\"':]\@<!:\%(\h\|[^\x00-\x7F]\)\%(\w\|[^\x00-\x7F]\)*\%([?!=]>\@!\)\=/  contained
+syntax match rubySymbol /\%([{(,]\_s*\)\@<=\l\w*[!?]\=::\@!/he=e-1  contained
+syntax match rubySymbol /[]})\"':]\@<!\%(\h\|[^\x00-\x7F]\)\%(\w\|[^\x00-\x7F]\)*[!?]\=:\s\@=/he=e-1  contained
+syntax match rubySymbol /\%([{(,]\_s*\)\@<=[[:space:],{]\l\w*[!?]\=::\@!/hs=s+1,he=e-1  contained
+syntax match rubySymbol /[[:space:],{]\%(\h\|[^\x00-\x7F]\)\%(\w\|[^\x00-\x7F]\)*[!?]\=:\s\@=/hs=s+1,he=e-1  contained
+syntax match vimSyncLinebreak /\<linebreaks=/  contained nextgroup=vimNumber skipwhite
+syntax match rubyInterpolationDelimiter /#\ze\%(\$\|@@\=\)\w\+/  display contained
+syntax match rubyInterpolationDelimiter /#\ze\$\%(-\w\|\W\)/  display contained
+syntax match perlStatementFiles /\<\%(ch\%(dir\|mod\|own\|root\)\|glob\|link\|mkdir\|readlink\|rename\|rmdir\|symlink\|umask\|unlink\|utime\)\>/  contained
+syntax match perlStatementFiles /-[rwxoRWXOezsfdlpSbctugkTBMAC]\>/  contained
+syntax match rubyLocalVariableOrMethod /\<[_[:lower:]][_[:alnum:]]*[?!=]\=/  display contained transparent contains=NONE
+syntax match vimCollClassErr /\[:.\{-\}:\]/  contained
+syntax match rubyModuleDeclaration /[^[:space:];#<]\+/  contained contains=rubyConstant,rubyOperator
+syntax match vimFuncBlank /\s\+/  contained
+syntax match vimComment /\s"[^\-:.%#=*].*$/ms=s+1,lc=1  excludenl contains=@vimCommentGroup,vimCommentString
+syntax match vimComment /\<endif\s\+".*$/ms=s+5,lc=5  contains=@vimCommentGroup,vimCommentString
+syntax match vimComment /\<else\s\+".*$/ms=s+4,lc=4  contains=@vimCommentGroup,vimCommentString
+syntax match rubyPredefinedVariable -$[!$&"'*+,./0:;<=>?@\`~]-  contained
+syntax match rubyPredefinedVariable /$\d\+/  display contained
+syntax match rubyPredefinedVariable /$_\>/  display contained
+syntax match rubyPredefinedVariable /$-[0FIKadilpvw]\>/  display contained
+syntax match rubyPredefinedVariable /$\%(deferr\|defout\|stderr\|stdin\|stdout\)\>/  display contained
+syntax match rubyPredefinedVariable /$\%(DEBUG\|FILENAME\|KCODE\|LOADED_FEATURES\|LOAD_PATH\|PROGRAM_NAME\|SAFE\|VERBOSE\)\>/  display contained
+syntax match vimBehaveError /[^ ]\+/  contained
+syntax match vimOper /\(==\|!=\|>=\|<=\|=\~\|!\~\|>\|<\|=\)[?#]\{0,2}/  nextgroup=vimString,vimSpecFile skipwhite
+syntax match vimOper /||\|&&\|[-+.]/  nextgroup=vimString,vimSpecFile skipwhite
+syntax match vimMenuName /[^ \t\\<]\+/  contained nextgroup=vimMenuNameMore,vimMenuMap
+syntax match vimCtrlChar /[^A-^H^K^O-^_]/
+syntax match vimContinue /^\s*\\/
+syntax match vimSynCase ignore
+syntax match vimAddress /,\zs[.$]/  nextgroup=vimSubst1 skipwhite
+syntax match vimAddress /%\ze\a/  nextgroup=vimString,vimSubst1 skipwhite
+syntax match vimSynKeyOpt /\<\(conceal\|contained\|transparent\|skipempty\|skipwhite\|skipnl\)\>/  contained
+syntax match perlSubAttributes //  contained nextgroup=perlSubError
+syntax match perlSubAttributes /:\_s*/  contained nextgroup=@perlSubAttrMaybe
+syntax match vimCmplxRepeat +[^a-zA-Z_/\\()]q[0-9a-zA-Z"]\>+ms=s+1,lc=1
+syntax match vimCmplxRepeat /@[0-9a-z".=@:]\ze\($\|[^a-zA-Z]\>\)/
+syntax match vimMapBang /!/  contained nextgroup=vimMapMod,vimMapLhs skipwhite
+syntax match perlSubPrototype /(\_[^)]*)\_s*\|/  contained contains=perlSubPrototypeError nextgroup=perlSubAttributes,perlComment
+syntax match rubyRepeatModifier /\<\%(while\|until\)\>/  display contained
+syntax match vimSearchDelim +^\s*\zs[/?]\|[/?]$+  contained
+syntax match rubyOperator /\<defined?/  display contained
+syntax match perlFormatName /format\s\+\k\+\s*=/ms=s+7,me=e-1,lc=7  contained
+syntax match vimUserAttrbCmpltFunc /,\%([sS]:\|<[sS][iI][dD]>\)\=\%(\h\w*\%(#\h\w*\)\+\|\h\w*\)/hs=s+1  contained nextgroup=vimUserCmdError
+syntax match perlStatementControl /\<\%(return\|last\|next\|redo\|goto\|break\)\>/  contained
+syntax match vimAugroupError /\<aug\%[roup]\>\s\+[eE][nN][dD]\>/
+syntax match perlVarPlain /$^[ACDEFHILMNOPRSTVWX]\=/  contained
+syntax match perlVarPlain /$[\\\"\[\]'&`+*.,;=%~!?@#$<>(-]/  contained
+syntax match perlVarPlain /%+/  contained
+syntax match perlVarPlain /$\%(0\|[1-9]\d*\)/  contained
+syntax match perlVarPlain /$::\@!/  contained
+syntax match perlVarPlain /\%([@$]\|\$#\)\$*\%(\I\i*\)\=\%(\%(::\|'\)\I\i*\)*\%(::\|\i\@<=\)/  contained contains=perlPackageRef nextgroup=perlVarMember,perlVarSimpleMember,perlMethod
+syntax match perlVarPlain /\%(\$#\|[@$]\)\$*{\I\i*}/  contained extend nextgroup=perlVarMember,perlVarSimpleMember,perlMethod
+syntax match vimSubstTwoBS /\\\\/  contained
+syntax match vimFunction /\<fu\%[nction]!\=\s\+\%(<[sS][iI][dD]>\|[sSgGbBwWtTlL]:\)\=\%(\i\|[#.]\|{.\{-1,}}\)*\ze\s*(/  contains=@vimFuncList nextgroup=vimFuncBody
+syntax match vimPlainRegister /"[a-zA-Z0-9\-:.%#*+=]/  contained
+syntax match perlSpecialStringU2 /\\./  contained extend contains=NONE
+syntax match perlSubError /[^[:space:];{#]/  contained
+syntax match podCmdText /.*$/  contained contains=podFormat,@NoSpell
+syntax match pythonDecorator /@/  display contained nextgroup=pythonFunction skipwhite
+syntax match vimGroupRem /remove=/  contained nextgroup=vimGroupList
+syntax match perlSubName /\%(\h\|::\|'\w\)\%(\w\|::\|'\w\)*\_s*\|/  contained nextgroup=perlSubPrototype,perlComment
+syntax match vimVar /\<\h[a-zA-Z0-9#_]*\>/  contained
+syntax match vimVar /\<[bwglsav]:\h[a-zA-Z0-9#_]*\>/
+syntax match luaNumber /\<\d\+\>/  contained
+syntax match luaNumber /\<\d\+\.\d*\%([eE][-+]\=\d\+\)\=\>/  contained
+syntax match luaNumber /\.\d\+\%([eE][-+]\=\d\+\)\=\>/  contained
+syntax match luaNumber /\<\d\+[eE][-+]\=\d\+\>/  contained
+syntax match luaNumber /\<0[xX][[:xdigit:].]\+\%([pP][-+]\=\d\+\)\=\>/  contained
+syntax match perlStatementPword /\<\%(get\%(pw\%(uid\|nam\)\|gr\%(gid\|nam\)\|login\)\)\|\%(end\|[gs]et\)\%(pw\|gr\)ent\>/  contained
+syntax match rubyPredefinedConstant /\%(\%(\.\@<!\.\)\@<!\|::\)\_s*\zs\%(MatchingData\|ARGF\|ARGV\|ENV\)\>\%(\s*(\)\@!/  contained
+syntax match rubyPredefinedConstant /\%(\%(\.\@<!\.\)\@<!\|::\)\_s*\zs\%(DATA\|FALSE\|NIL\)\>\%(\s*(\)\@!/  contained
+syntax match rubyPredefinedConstant /\%(\%(\.\@<!\.\)\@<!\|::\)\_s*\zs\%(STDERR\|STDIN\|STDOUT\|TOPLEVEL_BINDING\|TRUE\)\>\%(\s*(\)\@!/  contained
+syntax match rubyPredefinedConstant /\%(\%(\.\@<!\.\)\@<!\|::\)\_s*\zs\%(RUBY_\%(VERSION\|RELEASE_DATE\|PLATFORM\|PATCHLEVEL\|REVISION\|DESCRIPTION\|COPYRIGHT\|ENGINE\)\)\>\%(\s*(\)\@!/  contained
+syntax match rubyASCIICode +\%(\w\|[]})\"'/]\)\@<!\%(?\%(\\M-\\C-\|\\C-\\M-\|\\M-\\c\|\\c\\M-\|\\c\|\\C-\|\\M-\)\=\%(\\\o\{1,3}\|\\x\x\{1,2}\|\\\=\S\)\)+  contained
+syntax match vimHiKeyError /\i\+=/he=e-1  contained
+syntax match perlSubPrototypeError /(\%(\_s*\%(\%(\\\%([$@%&*]\|\[[$@%&*]\+\]\)\|[$&*]\|[@%]\%(\_s*)\)\@=\|;\%(\_s*[)$@%&*\\]\)\@=\|_\%(\_s*[);]\)\@=\)\_s*\)*\)\@>\zs\_[^)]\+/  contained
+syntax match vimSyncError /\i\+/  contained
+syntax match vimHiGuiFgBg /\cgui\%([fb]g\|sp\)=/he=e-1  contained nextgroup=vimHiGroup,vimHiGuiFontname,vimHiGuiRgb,vimFgBgAttrib
+syntax match rubyAliasDeclaration2 /[^[:space:];#.()]\+/  contained contains=rubySymbol,rubyGlobalVariable,rubyPredefinedVariable
+syntax match vimHiBang /!/  contained nextgroup=@vimHighlightCluster skipwhite
+syntax match vimSyncGroup /\h\w*/  contained nextgroup=vimSynRegPat,vimSyncNone skipwhite
+syntax match vimCollClass /\[:\(alnum\|alpha\|blank\|cntrl\|digit\|graph\|lower\|print\|punct\|space\|upper\|xdigit\|return\|tab\|escape\|backspace\):\]/  contained transparent
+syntax match vimHiTerm /\cterm=/he=e-1  contained nextgroup=vimHiAttribList
+syntax match perlStatementScalar /\<\%(chom\=p\|chr\|crypt\|r\=index\|lc\%(first\)\=\|length\|ord\|pack\|sprintf\|substr\|uc\%(first\)\=\)\>/  contained
+syntax match perlOperator /\<\%(defined\|undef\|eq\|ne\|[gl][et]\|cmp\|not\|and\|or\|xor\|not\|bless\|ref\|do\)\>/  contained
+syntax match rubyBlockArgument /&[_[:lower:]][_[:alnum:]]/  display contained transparent contains=NONE
+syntax match vimNorm /\<norm\%[al]!\=/  nextgroup=vimNormCmds skipwhite
+syntax match perlSpecialMatch xxx match /\\[1-9]/  contained extend
+syntax match perlSpecialMatch /\\g\%(\d\+\|{\%(-\=\d\+\|\h\w*\)}\)/  contained
+syntax match perlSpecialMatch /\\k\%(<\h\w*>\|'\h\w*'\)/  contained
+syntax match perlSpecialMatch /{\d\+\%(,\%(\d\+\)\=\)\=}/  contained
+syntax match perlSpecialMatch /\[[]-]\=[^\[\]]*[]-]\=\]/  contained extend
+syntax match perlSpecialMatch /[+*()?.]/  contained
+syntax match perlSpecialMatch /(?[#:=!]/  contained
+syntax match perlSpecialMatch /(?[impsx]*\%(-[imsx]\+\)\=)/  contained
+syntax match perlSpecialMatch /(?\%([-+]\=\d\+\|R\))/  contained
+syntax match perlSpecialMatch /(?\%(&\|P[>=]\)\h\w*)/  contained
+syntax match perlSpecialMatch /(\*\%(\%(PRUNE\|SKIP\|THEN\)\%(:[^)]*\)\=\|\%(MARK\|\):[^)]*\|COMMIT\|F\%(AIL\)\=\|ACCEPT\))/  contained
+syntax match vimSpecFileMod /\(:[phtre]\)\+/  contained
+syntax match vimSynNotPatRange /\\\\\|\\\[/  contained
+syntax match vimFunctionError /\s\zs[a-z0-9]\i\{-}\ze\s*(/  contained contains=vimFuncKey,vimFuncBlank
+syntax match perlSpecialStringU /\\\\/  contained
+syntax match vimMtchComment /"[^"]\+$/  contained
+syntax match vimHiGuiFont /\cfont=/he=e-1  contained nextgroup=vimHiFontname
+syntax match rubyKeywordAsMethod /\%(\%(\.\@<!\.\)\|::\)\_s*\%(alias\|and\|begin\|break\|case\|class\|def\|defined\|do\|else\)\>/  contained transparent contains=NONE
+syntax match rubyKeywordAsMethod /\%(\%(\.\@<!\.\)\|::\)\_s*\%(elsif\|end\|ensure\|false\|for\|if\|in\|module\|next\|nil\)\>/  contained transparent contains=NONE
+syntax match rubyKeywordAsMethod /\%(\%(\.\@<!\.\)\|::\)\_s*\%(not\|or\|redo\|rescue\|retry\|return\|self\|super\|then\|true\)\>/  contained transparent contains=NONE
+syntax match rubyKeywordAsMethod /\%(\%(\.\@<!\.\)\|::\)\_s*\%(undef\|unless\|until\|when\|while\|yield\|BEGIN\|END\|__FILE__\|__LINE__\)\>/  contained transparent contains=NONE
+syntax match rubyKeywordAsMethod /\<\%(alias\|begin\|case\|class\|def\|do\|end\)[?!]/  contained transparent contains=NONE
+syntax match rubyKeywordAsMethod /\<\%(if\|module\|undef\|unless\|until\|while\)[?!]/  contained transparent contains=NONE
+syntax match rubyKeywordAsMethod /\%(\%(\.\@<!\.\)\|::\)\_s*\%(abort\|at_exit\|attr\|attr_accessor\|attr_reader\)\>/  contained transparent contains=NONE
+syntax match rubyKeywordAsMethod /\%(\%(\.\@<!\.\)\|::\)\_s*\%(attr_writer\|autoload\|callcc\|catch\|caller\)\>/  contained transparent contains=NONE
+syntax match rubyKeywordAsMethod /\%(\%(\.\@<!\.\)\|::\)\_s*\%(eval\|class_eval\|instance_eval\|module_eval\|exit\)\>/  contained transparent contains=NONE
+syntax match rubyKeywordAsMethod /\%(\%(\.\@<!\.\)\|::\)\_s*\%(extend\|fail\|fork\|include\|lambda\)\>/  contained transparent contains=NONE
+syntax match rubyKeywordAsMethod /\%(\%(\.\@<!\.\)\|::\)\_s*\%(load\|loop\|prepend\|private\|proc\|protected\)\>/  contained transparent contains=NONE
+syntax match rubyKeywordAsMethod /\%(\%(\.\@<!\.\)\|::\)\_s*\%(public\|require\|require_relative\|raise\|throw\|trap\)\>/  contained transparent contains=NONE
+syntax match vimMenuMod /\c<\(script\|silent\)\+>/  contained contains=vimMapModKey,vimMapModErr nextgroup=@vimMenuList skipwhite
+syntax match perlStatementFlow /\<\%(caller\|die\|dump\|eval\|exit\|wantarray\)\>/  contained
+syntax match perlNotEmptyLine /^\s\+$/  contained
+syntax match rubyBoolean /\<\%(true\|false\)\>[?!]\@!/  contained
+syntax match perlPackageConst /__PACKAGE__/  contained nextgroup=perlMethod
+syntax match perlFunctionName /&\$*\%(\I\i*\)\=\%(\%(::\|'\)\I\i*\)*\%(::\|\i\@<=\)/  contained contains=perlPackageRef nextgroup=perlVarMember,perlVarSimpleMember,perlMethod
+syntax match perlFunctionName /\h\w*[^:]/  contained
+syntax match vimBufnrWarn /\<bufnr\s*(\s*["']\.['"]\s*)/
+syntax match luaError /\<\%(end\|else\|elseif\|then\|until\|in\)\>/  contained
+syntax match luaParenError /)/  contained
+syntax match perlStatementTime /\<\%(gmtime\|localtime\|time\)\>/  contained
+syntax match vimHiFontname /[a-zA-Z\-*]\+/  contained
+syntax match vimHiAttribList /\i\+/  contained contains=vimHiAttrib
+syntax match vimHiAttribList /\i\+,/he=e-1  contained contains=vimHiAttrib nextgroup=vimHiAttribList
+syntax match vimFuncSID /\c<sid>\|\<s:/  contained
+syntax match vimMapMod /\c<\(buffer\|expr\|\(local\)\=leader\|nowait\|plug\|script\|sid\|unique\|silent\)\+>/  contained contains=vimMapModKey,vimMapModErr nextgroup=vimMapMod,vimMapLhs skipwhite
+syntax match rubyRegexpDot /\./  display contained
+syntax match rubyDelimEscape /\\[(<{\[)>}\]]/  display contained transparent contains=NONE
+syntax match vimHiStartStop /\c\(start\|stop\)=/he=e-1  contained nextgroup=vimHiTermcap,vimOption
+syntax match perlVarNotInMatches /$[|)]/  contained
+syntax match luaComment /--.*$/  contained contains=luaTodo,@Spell
+syntax match vimFunc /\%(\%([sSgGbBwWtTlL]:\|<[sS][iI][dD]>\)\=\%([a-zA-Z0-9_]\+\.\)*\I[a-zA-Z0-9_.]*\)\ze\s*(/  contains=vimFuncName,vimUserFunc,vimExecute
+syntax match vimHiTermcap /\S\+/  contained contains=vimNotation
+syntax match perlString /\<\%(v\d\+\%(\.\d\+\)*\|\d\+\%(\.\d\+\)\{2,}\)\>/  contained contains=perlVStringV
+syntax match perlNumber /\<\%(0\%(x\x[[:xdigit:]_]*\|b[01][01_]*\|\o[0-7_]*\|\)\|[1-9][[:digit:]_]*\)\>/  contained
+syntax match rubyMethodDeclaration /[^[:space:];#(]\+/  contained contains=rubyConstant,rubyBoolean,rubyPseudoVariable,rubyInstanceVariable,rubyClassVariable,rubyGlobalVariable
+syntax match perlStatementHash /\<\%(delete\|each\|exists\|keys\|values\)\>/  contained
+syntax match rubyRegexpCharClass /\\[DdHhSsWw]/  display contained
+syntax match rubyRegexpCharClass /\[:\^\=\%(alnum\|alpha\|ascii\|blank\|cntrl\|digit\|graph\|lower\|print\|punct\|space\|upper\|xdigit\):\]/  contained
+syntax match perlFunctionPRef /\h\w*::/  contained
+syntax match pythonNumber /\<0[oO]\=\o\+[Ll]\=\>/  contained
+syntax match pythonNumber /\<0[xX]\x\+[Ll]\=\>/  contained
+syntax match pythonNumber /\<0[bB][01]\+[Ll]\=\>/  contained
+syntax match pythonNumber /\<\%([1-9]\d*\|0\)[Ll]\=\>/  contained
+syntax match pythonNumber /\<\d\+[jJ]\>/  contained
+syntax match pythonNumber /\<\d\+[eE][+-]\=\d\+[jJ]\=\>/  contained
+syntax match pythonNumber /\<\d\+\.\%([eE][+-]\=\d\+\)\=[jJ]\=\%(\W\|$\)\@=/  contained
+syntax match pythonNumber /\%(^\|\W\)\zs\d*\.\d\+\%([eE][+-]\=\d\+\)\=[jJ]\=\>/  contained
+syntax match perlStatementStorage /\<\%(my\|our\|local\|state\)\>/  contained
+syntax match luaBraceError /}/  contained
+syntax match rubySharpBang /\%^#!.*/  display contained
+syntax match vimNotFunc /\<if\>\|\<el\%[seif]\>\|\<return\>\|\<while\>/
+syntax match vimMenuRhs /.*$/  contained contains=vimString,vimComment,vimIsCommand
+syntax match vimAutoEventList /\(!\s\+\)\=\(\a\+,\)*\a\+/  contained contains=vimAutoEvent nextgroup=vimAutoCmdSpace
+syntax match perlMethod /->\$*\I\i*/  contained nextgroup=perlVarSimpleMember,perlVarMember,perlMethod
+syntax match vimAutoCmdSpace /\s\+/  contained nextgroup=vimAutoCmdSfxList
+syntax match vimPatSepErr /\\)/  contained
+syntax match vimUserAttrbError /-\a\+\ze\s/  contained
+syntax match vimHiNmbr /\d\+/  contained
+syntax match vimFuncName py3eval writefile fnamemodify add strpart range getloclist server2client synIDtrans settabvar getregtype join bufexists taglist items jsonencode expand
+syntax match vimSynMtchCchar /\S/  contained
+syntax match rubyInteger /\%(\%(\w\|[]})\"']\s*\)\@<!-\)\=\<0[xX]\x\+\%(_\x\+\)*\>/  display contained
+syntax match rubyInteger /\%(\%(\w\|[]})\"']\s*\)\@<!-\)\=\<\%(0[dD]\)\=\%(0\|[1-9]\d*\%(_\d\+\)*\)\>/  display contained
+syntax match rubyInteger /\%(\%(\w\|[]})\"']\s*\)\@<!-\)\=\<0[oO]\=\o\+\%(_\o\+\)*\>/  display contained
+syntax match rubyInteger /\%(\%(\w\|[]})\"']\s*\)\@<!-\)\=\<0[bB][01]\+\%(_[01]\+\)*\>/  display contained
+syntax match vimSynPatMod /\(hs\|ms\|me\|hs\|he\|rs\|re\)=[se]\([-+]\d\+\)\=/  contained
+syntax match vimSynPatMod /\(hs\|ms\|me\|hs\|he\|rs\|re\)=[se]\([-+]\d\+\)\=,/  contained nextgroup=vimSynPatMod
+syntax match vimSynPatMod /lc=\d\+/  contained
+syntax match vimSynPatMod /lc=\d\+,/  contained nextgroup=vimSynPatMod
+syntax match vimCommentTitleLeader /"\s\+/ms=s+1  contained
+syntax match vimMapRhs /.*/  contained contains=vimNotation,vimCtrlChar nextgroup=vimMapRhsExtend skipnl
+syntax match rubyClass /\<class\>/  contained nextgroup=rubyClassDeclaration skipwhite skipnl
+syntax match vimHiCTerm /\ccterm=/he=e-1  contained nextgroup=vimHiAttribList
+syntax match rubyRegexpAnchor /[$^]\|\\[ABbGZz]/  display contained
+syntax match vimSyncKey /\<groupthere\|grouphere\>/  contained nextgroup=vimSyncGroup skipwhite
+syntax match perlFloat /\<\d[[:digit:]_]*[eE][\-+]\=\d\+/  contained
+syntax match perlFloat /\<\d[[:digit:]_]*\.[[:digit:]_]*\%([eE][\-+]\=\d\+\)\=/  contained
+syntax match perlFloat /\.[[:digit:]][[:digit:]_]*\%([eE][\-+]\=\d\+\)\=/  contained
+syntax match vimSynRegOpt /\<\(conceal\(ends\)\=\|transparent\|contained\|excludenl\|skipempty\|skipwhite\|display\|keepend\|oneline\|extend\|skipnl\|fold\)\>/  contained
+syntax match perlFakeGroup //  contained
+syntax match vimNotation /\(\\\|<lt>\)\=<\([scamd]-\)\{0,4}x\=\(f\d\{1,2}\|[^ \t:]\|cr\|lf\|linefeed\|return\|k\=del\%[ete]\|bs\|backspace\|tab\|esc\|right\|left\|help\|undo\|insert\|ins\|k\=home\|k\=end\|kplus\|kminus\|kdivide\|kmultiply\|kenter\|kpoint\|space\|k\=\(page\)\=\(\|down\|up\|k\d\>\)\)>/  contains=vimBracket
+syntax match vimNotation /\(\\\|<lt>\)\=<\([scam2-4]-\)\{0,4}\(right\|left\|middle\)\(mouse\)\=\(drag\|release\)\=>/  contains=vimBracket
+syntax match vimNotation /\(\\\|<lt>\)\=<\(bslash\|plug\|sid\|space\|bar\|nop\|nul\|lt\)>/  contains=vimBracket
+syntax match vimNotation /\(\\\|<lt>\)\=<C-R>[0-9a-z"%#:.\-=]/he=e-1  contains=vimBracket
+syntax match vimNotation /\(\\\|<lt>\)\=<\%(q-\)\=\(line[12]\|count\|bang\|reg\|args\|f-args\|lt\)>/  contains=vimBracket
+syntax match vimNotation /\(\\\|<lt>\)\=<\([cas]file\|abuf\|amatch\|cword\|cWORD\|client\)>/  contains=vimBracket
+syntax match vimEnvvar /\$\I\i*/
+syntax match vimEnvvar /\${\I\i*}/
+syntax match vimPatSep /\\|/  contained
+syntax match perlStatementNetwork /\<\%(\%(end\|[gs]et\)\%(host\|net\|proto\|serv\)ent\|get\%(\%(host\|net\)by\%(addr\|name\)\|protoby\%(name\|number\)\|servby\%(name\|port\)\)\)\>/  contained
+syntax match vimUserCmd /\<com\%[mand]!\=\>.*$/  contains=vimUserAttrb,vimUserAttrbError,vimUserCommand,@vimUserCmdList
+syntax match perlStatementIPC /\<\%(msg\%(ctl\|get\|rcv\|snd\)\|sem\%(ctl\|get\|op\)\|shm\%(ctl\|get\|read\|write\)\)\>/  contained
+syntax match vimSynMtchOpt /\<\(conceal\|transparent\|contained\|excludenl\|skipempty\|skipwhite\|display\|extend\|skipnl\|fold\)\>/  contained
+syntax match vimSynMtchOpt /\<cchar=/  contained nextgroup=vimSynMtchCchar
+syntax match pythonFunction /\%(\%(def\s\|class\s\|@\)\s*\)\@<=\h\%(\w\|\.\)*/  contained
+syntax match vimMenuNameMore /\c\\\s\|<tab>\|\\\./  contained contains=vimNotation nextgroup=vimMenuName,vimMenuNameMore
+syntax match podEscape /\I\i*>/me=e-1  contained contains=@NoSpell
+syntax match rubyGlobalVariable /$\%(\%(\h\|[^\x00-\x7F]\)\%(\w\|[^\x00-\x7F]\)*\|-.\)/  contained
+syntax match perlVStringV /\<v/  contained
+syntax match vimIsCommand /\<\h\w*\>/  contains=vimCommand
+syntax match vimIsCommand /<Bar>\s*\a\+/  transparent contains=vimCommand,vimNotation
+syntax match vimNormCmds /.*$/  contained
+syntax match vimSearch +^\s*[/?].*+  contains=vimSearchDelim
+syntax match vimFBVar /\<[bwglsav]:\h[a-zA-Z0-9#_]*\>/  contained
+syntax match vimUserFunc /\%(\%([sSgGbBwWtTlL]:\|<[sS][iI][dD]>\)\=\%([a-zA-Z0-9_]\+\.\)*\I[a-zA-Z0-9_.]*\)\|\<\u[a-zA-Z0-9.]*\>\|\<if\>/  contained contains=vimNotation
+syntax match vimOperError /)/
+syntax match perlSubAttributesCont /\h\w*\_s*\%(:\_s*\)\=/  contained nextgroup=@perlSubAttrMaybe
+syntax match vimSubstSubstr /\\z\=\d/  contained
+syntax match vimMapRhsExtend /^\s*\\.*$/  contained contains=vimContinue
+syntax match rubyQuoteEscape /\\[\\']/  display contained
+syntax match vimUserCmdError /\S\+\>/  contained
+syntax match podCommand /^=encoding/  contained contains=@NoSpell nextgroup=podCmdText
+syntax match podCommand /^=head[1234]/  contained contains=@NoSpell nextgroup=podCmdText
+syntax match podCommand /^=item/  contained contains=@NoSpell nextgroup=podCmdText
+syntax match podCommand /^=over/  contained contains=@NoSpell nextgroup=podOverIndent skipwhite
+syntax match podCommand /^=back/  contained contains=@NoSpell
+syntax match podCommand /^=cut/  contained contains=@NoSpell
+syntax match podCommand /^=pod/  contained contains=@NoSpell
+syntax match podCommand /^=for/  contained contains=@NoSpell nextgroup=podForKeywd skipwhite
+syntax match podCommand /^=begin/  contained contains=@NoSpell nextgroup=podForKeywd skipwhite
+syntax match podCommand /^=end/  contained contains=@NoSpell nextgroup=podForKeywd skipwhite
+syntax match perlStatementProc /\<\%(alarm\|exec\|fork\|get\%(pgrp\|ppid\|priority\)\|kill\|pipe\|set\%(pgrp\|priority\)\|sleep\|system\|times\|wait\%(pid\)\=\)\>/  contained
+syntax match vimAuSyntax /\s+sy\%[ntax]/  contained contains=vimCommand nextgroup=vimSynType,vimComment skipwhite
+syntax match rubyDefine /\<alias\>/  contained nextgroup=rubyAliasDeclaration skipwhite skipnl
+syntax match rubyDefine /\<def\>/  contained nextgroup=rubyMethodDeclaration skipwhite skipnl
+syntax match rubyDefine /\<undef\>/  contained nextgroup=rubyFunction skipwhite skipnl
+syntax match vimNotPatSep /\\\\/  contained
+syntax match vimHiGuiFontname /'[a-zA-Z\-* ]\+'/  contained
+syntax match perlVarSlash +$/+  contained
+syntax match vimBracket /[\\<>]/  contained
+syntax match podEscape2 /\d\+>/me=e-1  contained contains=@NoSpell
+syntax match podOverIndent /\d\+/  contained contains=@NoSpell
+syntax match rubyFloat /\%(\%(\w\|[]})\"']\s*\)\@<!-\)\=\<\%(0\|[1-9]\d*\%(_\d\+\)*\)\.\d\+\%(_\d\+\)*\>/  display contained
+syntax match rubyFloat /\%(\%(\w\|[]})\"']\s*\)\@<!-\)\=\<\%(0\|[1-9]\d*\%(_\d\+\)*\)\%(\.\d\+\%(_\d\+\)*\)\=\%([eE][-+]\=\d\+\%(_\d\+\)*\)\>/  display contained
+syntax match vimMark /'[a-zA-Z0-9]\ze[-+,!]/  nextgroup=vimOper,vimMarkNumber,vimSubst
+syntax match vimMark /'[<>]\ze[-+,!]/  nextgroup=vimOper,vimMarkNumber,vimSubst
+syntax match vimMark /,\zs'[<>]\ze/  nextgroup=vimOper,vimMarkNumber,vimSubst
+syntax match vimMark /[!,:]\zs'[a-zA-Z0-9]/  nextgroup=vimOper,vimMarkNumber,vimSubst
+syntax match vimMark /\<norm\%[al]\s\zs'[a-zA-Z0-9]/  nextgroup=vimOper,vimMarkNumber,vimSubst
+syntax match rubyClassDeclaration /[^[:space:];#<]\+/  contained contains=rubyConstant,rubyOperator
+syntax match podForKeywd /\S\+/  contained contains=@NoSpell
+syntax match perlStatementRegexp /\<\%(pos\|quotemeta\|split\|study\)\>/  contained
+syntax match rubyConstant /\%(\%([.@$]\@<!\.\)\@<!\<\|::\)\_s*\zs\u\w*\%(\>\|::\)\@=\%(\s*(\)\@!/  contained
+syntax match vimRegister +[^,;[{: \t]\zs"[a-zA-Z0-9.%#:_\-/]\ze[^a-zA-Z_":0-9]+
+syntax match vimRegister /\<norm\s\+\zs"[a-zA-Z0-9]/
+syntax match vimRegister /\<normal\s\+\zs"[a-zA-Z0-9]/
+syntax match vimRegister /@"/
+syntax match perlStatementFiledesc /\<\%(binmode\|close\%(dir\)\=\|eof\|fileno\|getc\|lstat\|printf\=\|read\%(dir\|line\|pipe\)\|rewinddir\|say\|select\|stat\|tell\%(dir\)\=\|write\)\>/  contained nextgroup=perlFiledescStatementNocomma skipwhite
+syntax match perlStatementFiledesc /\<\%(fcntl\|flock\|ioctl\|open\%(dir\)\=\|read\|seek\%(dir\)\=\|sys\%(open\|read\|seek\|write\)\|truncate\)\>/  contained nextgroup=perlFiledescStatementComma skipwhite
+syntax match vimSynReg /\(start\|skip\|end\)=/he=e-1  contained nextgroup=vimSynRegPat
+syntax match vimFuncVar /a:\(\K\k*\|\d\+\)/  contained
+syntax match perlStatementVector /\<vec\>/  contained
+syntax match vimPlainMark /'[a-zA-Z0-9]/  contained
+syntax match rubyModule /\<module\>/  contained nextgroup=rubyModuleDeclaration skipwhite skipnl
+syntax match perlStatementNumeric /\<\%(abs\|atan2\|cos\|exp\|hex\|int\|log\|oct\|rand\|sin\|sqrt\|srand\)\>/  contained
+syntax match perlRepeat /\<\%(while\|for\%(each\)\=\|do\|until\|continue\)\>/  contained
+syntax match perlSharpBang /^#!.*/  contained
+syntax match rubyRegexpSpecial /|/  display contained
+syntax match rubyRegexpSpecial /\\[1-9]\d\=\d\@!/  display contained
+syntax match rubyRegexpSpecial /\\k<\%([a-z_]\w*\|-\=\d\+\)\%([+-]\d\+\)\=>/  display contained
+syntax match rubyRegexpSpecial /\\k'\%([a-z_]\w*\|-\=\d\+\)\%([+-]\d\+\)\='/  display contained
+syntax match rubyRegexpSpecial /\\g<\%([a-z_]\w*\|-\=\d\+\)>/  display contained
+syntax match rubyRegexpSpecial /\\g'\%([a-z_]\w*\|-\=\d\+\)'/  display contained
+syntax match perlFiledescStatementComma /(\=\s*\u\w*\s*,/me=e-1  contained transparent contains=perlFiledescStatement
+syntax match vimSynKeyContainedin /\<containedin=/  contained nextgroup=vimGroupList
+syntax match luaSpecial /\\[\\abfnrtvz'"]\|\\x[[:xdigit:]]\{2}\|\\[[:digit:]]\{,3}/  contained
+syntax match vimFTError /\I\i*/  contained
+syntax match rubyFunction /\<[_[:alpha:]][_[:alnum:]]*[?!=]\=[[:alnum:]_.:?!=]\@!/  contained containedin=rubyMethodDeclaration
+syntax match rubyFunction /\%(\s\|^\)\@<=[_[:alpha:]][_[:alnum:]]*[?!=]\=\%(\s\|$\)\@=/  contained containedin=rubyAliasDeclaration,rubyAliasDeclaration2
+syntax match rubyFunction "\%([[:space:].]\|^\)\@<=\%(\[\]=\=\|\*\*\|[+-]@\=\|[*/%|&^~]\|<<\|>>\|[<>]=\=\|<=>\|===\|[=!]=\|[=!]\~\|!\|`\)\%([[:space:];#(]\|$\)\@="  contained containedin=rubyAliasDeclaration,rubyAliasDeclaration2,rubyMethodDeclaration

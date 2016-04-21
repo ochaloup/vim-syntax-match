@@ -69,19 +69,18 @@ function! s:getSyntaxAsDict()
       continue
     endif
 
-    " creating structure of data that will be later
-    " converted to syntax commands
+    "" going throug file and taking info about 'match' commands
+    " when line does not start with space then it's definition of color
+    if l:syntax_line =~ '^\S\+'
+      let l:match_color = matchstr(l:syntax_line, '^\S\+')
+    endif
     if l:syntax_line =~ ' match '
       " line starts with non-whitespace character - defines a color
-      if l:syntax_line =~ '^\S\+'
-        let l:match_color = matchstr(l:syntax_line, '^\S\+')
-      endif
       let l:match_pattern = matchstr(l:syntax_line, 'match \zs.*')
       let l:match_pattern = s:strip(l:match_pattern)
-      
 
       if !exists('l:match_color')
-        echo 'Syntax line "' . l:syntax_line . '" cannot be processed'
+        echo 'Syntax line "' . l:syntax_line . '" cannot be processed as matched color does not exist'
         continue
       endif
 
@@ -90,10 +89,6 @@ function! s:getSyntaxAsDict()
         let l:match_jar[l:match_color] = [l:match_pattern]
       else
         let l:match_jar[l:match_color] += [l:match_pattern]
-      endif
-    else
-      if exists('l:match_color')
-        unlet l:match_color
       endif
     endif
   endfor
