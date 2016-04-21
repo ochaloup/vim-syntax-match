@@ -3,6 +3,10 @@ function! syntaxmatch#saveSyntax()
   let l:syntax = s:getSyntaxCommands()
   let l:syntaxfile = s:getSyntaxFile()
   
+  if !filewritable(l:syntaxfile)
+    return
+  endif
+
   " echo "Syntax file is: " . l:syntaxfile . " and syntax is " . join(l:syntax, '|')
   execute 'redir! >' . l:syntaxfile
   silent! echo join(l:syntax, "\n")
@@ -70,12 +74,14 @@ function! s:getSyntaxAsDict()
     endif
 
     "" going throug file and taking info about 'match' commands
-    " when line does not start with space then it's definition of color
+    " line starts with non-whitespace character - defines a color
     if l:syntax_line =~ '^\S\+'
       let l:match_color = matchstr(l:syntax_line, '^\S\+')
     endif
-    if l:syntax_line =~ ' match '
-      " line starts with non-whitespace character - defines a color
+    " if line contains word 'match' in expected context then process further
+    if l:syntax_line =~ '  match \|x match '
+      " pattern \zs means that matchstr will return the match after this \zs
+      "  meaning that word 'match' won't be in returned string content
       let l:match_pattern = matchstr(l:syntax_line, 'match \zs.*')
       let l:match_pattern = s:strip(l:match_pattern)
 
@@ -127,3 +133,4 @@ function! s:isFileExists(filename)
   endif
   return 0
 endfunction
+
