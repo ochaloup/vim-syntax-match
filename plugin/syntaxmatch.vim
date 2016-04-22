@@ -1,7 +1,8 @@
-if exists("b:is_syntax_match_defined")
+if exists('b:is_syntax_match_defined')
     finish
 endif
 
+" automatic loading and saving syntax
 augroup SyntaxMatch
   autocmd!
 
@@ -9,7 +10,11 @@ augroup SyntaxMatch
   " to match all exept of syntax files - what is syntax file is defined under ftdetect folder
   " autocmd BufWritePre * if index(['syntaxmatch'], &ft) < 0 | :call syntaxmatch#syntaxFileExecute()
 
-  autocmd! BufWrite,BufDelete,BufLeave,BufWipeout,BufUnload  *.log  :call syntaxmatch#saveSyntax()
+  " syntax file won't be automatically created when variable syntax_match_disable is set
+  if !exists('g:syntax_match_disable') || !g:syntax_match_disable
+      autocmd! BufWrite,BufDelete,BufLeave,BufWipeout,BufUnload  *.log,*.txt  :call syntaxmatch#saveSyntax()
+  endif
+
   autocmd! BufRead * :call syntaxmatch#syntaxFileExecute()
 augroup END
 
@@ -18,8 +23,11 @@ augroup END
 syntax on
 colorscheme syntaxmatch
 
+" manually saving syntax file that will be loaded next time
+" when file is opened
 command! SaveSyntax         call syntaxmatch#saveSyntax()
 
+" commands for match specification in faster way
 command! -nargs=1 Yellow    syntax match yellow <f-args>
 command! -nargs=1 Yellow2   syntax match yellow2 <f-args>
 command! -nargs=1 Yellow3   syntax match yellow3 <f-args>

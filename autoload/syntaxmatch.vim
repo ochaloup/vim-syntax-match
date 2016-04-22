@@ -4,12 +4,13 @@ function! syntaxmatch#saveSyntax()
   let l:syntax = s:getSyntaxCommands()
   let l:syntaxfile = s:getSyntaxFile()
   
-  echo "Syntax file is: " . l:syntaxfile 
+  " echo 'Syntax file is: ' . l:syntaxfile
   if filewritable(s:getSyntaxDir()) != 2
+    echoe 'Cannot write syntax file ' . l:syntaxfile . ' to directory ' . s:getSyntaxDir() . ' as not writable'
     return
   endif
 
-  "echo "Syntax file is: " . l:syntaxfile . " and syntax is " . join(l:syntax, '|')
+  " echo 'Syntax file is: ' . l:syntaxfile . ' and syntax is ' . join(l:syntax, '|')
   execute 'redir! >' . l:syntaxfile
   silent! echo join(l:syntax, "\n")
   execute 'redir END'
@@ -90,7 +91,7 @@ function! s:getSyntaxAsDict()
       let l:match_pattern = s:strip(l:match_pattern)
 
       if !exists('l:match_color')
-        echo 'Syntax line "' . l:syntax_line . '" cannot be processed as matched color does not exist'
+        echoe 'Syntax line "' . l:syntax_line . '" cannot be processed as matched color does not exist'
         continue
       endif
 
