@@ -1,0 +1,163 @@
+= Vim plugin for saving syntax match rules
+
+== What the plugin provides
+
+This plugin offers functionality to save `syntax match` rules to an auxiliary file placed beside of file with the original content.
+Then the syntax highligting will be restored based on the saved rules in the auxiliary file.
+
+Beside of having capability to restore defined syntax match rules when specific files is opened again
+it tries to solve trouble that I have with vim `match` command (`:match Comment /pattern/`).
+You can match only one pattern at time.
+When using `match` again the previously hightlighted text is not anymore.
+I wanted chance to add highligting dynamically for different patterns.
+Sure there are commands `2match` and `3match` but for me it's not normally enough (see my usecase).
+
+== How to install
+
+The easiest way to install is use pathogen plugin: http://www.vim.org/scripts/script.php?script_id=2332
+
+For installation steps for pathogen plugin see the link above or do following.
+This downloads file with the pathogen plugin to directory `~/.vim/autoload` (see http://learnvimscriptthehardway.stevelosh.com/chapters/42.html)
+and loads pathogen plugin each time when a vim is used.
+
+. `mkdir -p ~/.vim/autoload ~/.vim/bundle`
+. `curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim`
+. add line `execute pathogen#infect()` to your `~/.vimrc` file
+
+Now the installation of this plugin is easy like
+
+. `git clone git@github.com:ochaloup/vim-syntax-match.git ~/.vim/autoload/vim-syntax-match`
+
+== Usage
+
+=== Basic usage
+
+Whenever you open any `.log` or `.txt` file the plugin is activated.
+Now you can use `syntax match` (`:help syn-match`) command to have specific
+highlighting for this file.
+
+[NOTE]
+====
+Syntax match command has basic syntax `syntax match <color> /regexp/`.
+
+
+* `<color>` has to be defined hightlight definition (see `:help :highlight`).
+  If you want basically you will set `hi yellow guibg=#ffff00 ctermbg=11`.
+* `regexp` is standard regular expression pattern when matched then hightlight is used
+* command `syntax` does have abbreviation to `syn` only (`syn match red /hello/`)
+====
+
+Save the file and quit.
+Next time when you open the file the syntax will be loaded. +
+So enjoy!
+
+If you open any file of different type you can call command `:SaveSyntax`.
+At that time the syntax match rules are saved to the auxiliary file.
+When you open the same file next time syntax rules are loaded and shown.
+
+==== Helper commands
+
+For you not need to repeatedly write command sentence `:syn match Boolean /pattern/`
+plugin brings two things.
+
+Predefined hightlightings named as colors. You can write `:syn match red /pattern/`.
+For you to see what colors are defined see `~/.vim/bundle/vim-syntax-match/colors/syntaxmatch.vim`.
+
+Predefined user commans which abbreviate necessity to write the `syn match color`.
+You can write only `:Yellow pattern`. Or more abbreviated only `:Y pattern`.
+
+[cols="4*", options="header"]
+|===
+|Command
+|Abbreviation
+|Example
+|Meaning
+
+|Yellow   |Y   |`:Y pattern`   |`:syn match yellow /pattern/`
+|Yellow2  |Y2  |`:Y2 pattern`  |`:syn match yellow2 /pattern/`
+|Yellow3  |Y3  |`:Y3 pattern`  |`:syn match yellow3 /pattern/`
+|Red      |R   |`:R pattern`   |`:syn match red /pattern/`
+|Red2     |R2  |`:R2 pattern`  |`:syn match red2 /pattern/`
+|Red3     |R3  |`:R3 pattern`  |`:syn match red3 /pattern/`
+|Orange   |O   |`:O pattern`   |`:syn match orange /pattern/`
+|Orange2  |O2  |`:O2 pattern`  |`:syn match orange2 /pattern/`
+|Orange3  |O3  |`:O3 pattern`  |`:syn match orange3 /pattern/`
+|Violet   |V   |`:V pattern`   |`:syn match violet /pattern/`
+|Violet2  |V2  |`:V2 pattern`  |`:syn match violet2 /pattern/`
+|Violet3  |V3  |`:V3 pattern`  |`:syn match violet3 /pattern/`
+|Violet4  |V4  |`:V4 pattern`  |`:syn match violet4 /pattern/`
+|Green    |G   |`:G pattern`   |`:syn match green /pattern/`
+|Green2   |G2  |`:G2 pattern`  |`:syn match green2 /pattern/`
+|Green3   |G3  |`:G3 pattern`  |`:syn match green3 /pattern/`
+|Blue     |B   |`:B pattern`   |`:syn match blue /pattern/`
+|Blue2    |B2  |`:B2 pattern`  |`:syn match blue2 /pattern/`
+|Blue3    |B3  |`:B3 pattern`  |`:syn match blue3 /pattern/`
+|Grey     |GY  |`:GY pattern`  |`:syn match grey /pattern/`
+|Grey2    |GY2 |`:GY2 pattern` |`:syn match grey2 /pattern/`
+|Grey3    |GY3 |`:GY3 pattern` |`:syn match grey3 /pattern/`
+|===
+
+=== How works internally
+
+* Plugin defines autocommand for `.log` and `.txt` to call `SaveSyntax()` function at time when such file is closed.
+* `SaveSyntax()` function calls command `:syntax` which list all currently defined syntax highlighting rules.
+* Function filter only those which uses `match` (see http://learnvimscriptthehardway.stevelosh.com/chapters/46.html or `:help syn-match`).
+* It converts output of `:syntax` command and creates valid `syntax match <color> /pattern/` commands.
+* These commands are then saved to auxiliary file with name pattern `.<original_file_name>.syntax`.
+  That means after syntax is saved you can find a `.syntax` file besides of your original file.
+* When a file is opened then it check existence of the `.syntax` file with the same name.
+* If the auxiliary file (`*.syntax`) exists then its content line by line is executed.
+
+[WARNING]
+====
+A file could be highlighted with different syntax highlighting rules before you start to use
+your own. That's caused by other plugin or syntax rules (see http://learnvimscriptthehardway.stevelosh.com/chapters/45.html).
+All rules that uses `match` are saved to the result file.
+
+There could be a clash between rules. Meaning two match patterns could hightlight the same text.
+Which pattern is used is resolved based priority rules (see `:help syn-priority`).
+Basically the last used rule overrule the previous one.
+
+As rules are saved and then loaded from a file there is no check for their order.
+That causes that highlighting result will be different when edited and
+then later when loaded.
+Rules could beat each other when their patterns overlaps.
+====
+
+== Tips
+
+=== Hightligting to HTML
+
+Vim comes with handy function `:TOhtml` which takes your text document and convert it to html file.
+That html file is highighted as you defined it with `syntax` commands.
+This plugin offers small enhancement to that function when called `:TOHtmlWithLines` you can click
+on the shown line numbers to get link with anchor (`#`).
+
+=== Synchronized scrolling in vim windows
+
+If you investigate some logs which are similar but not the same and you want to see them in sync one beside other
+try vim command `:set scrollbind`. Any file (buffer) that has set this is then scrolled in sync with all other
+buffers that used this settings as well.
+Abbreviation is `:set scb` and unsetting is done by `:set scb!`.
+
+Usage is like
+
+. open a file `vim filename`
+. `:set scb`
+. open other file as new window in vim `:vsplit otherfile`
+. `:set scb`
+. scroll
+
+(for switching from one window to other you can use shortcut `CTRL+W W`)
+
+== How do I use it (aka my usecase)
+
+My usecase is for investigation in log files.
+I have usually works with logs from http://wildfly.org[WildFly] app server
+where I investigate issues connected to http://narayana.io[Narayana] transaction manager.
+That means that I met long transaction ids on several places of the log file
+and it's very useful to differentiate them visually by coloring them.
+
+This is especially good when I need to connect ids of JMS or JDBC with transaction ids.
+I normally uses the same color for the connected identifiers and then I'm able to follow
+what happens in the log file.
