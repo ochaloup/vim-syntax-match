@@ -34,7 +34,11 @@ function! syntaxmatch#syntaxFileExecute()
 
   let l:filecontent = readfile(l:filePath)
   for l:line in l:filecontent
-    execute l:line
+    if l:line =~ '^syntax match'
+      execute l:line
+    else
+      echoe 'Cannot execute line "' . l:line . '" as it is not a syntax match command'
+    endif
   endfor
 endfunction
 
