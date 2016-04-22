@@ -99,7 +99,10 @@ function! s:getSyntaxAsDict()
       if !has_key(l:match_jar, l:match_color)
         let l:match_jar[l:match_color] = [l:match_pattern]
       else
-        let l:match_jar[l:match_color] += [l:match_pattern]
+        " item is added to to the list only if does not exist already
+        if index(l:match_jar[l:match_color], l:match_pattern) == -1
+          let l:match_jar[l:match_color] += [l:match_pattern]
+        endif
       endif
     endif
   endfor
