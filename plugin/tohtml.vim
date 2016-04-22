@@ -7,6 +7,7 @@ endif
 function! TOHtmlWithLines(line1, line2)
    let g:html_dynamic_folds = 1
    let g:html_no_progress = 1
+   let g:html_number_lines = 1
    exec 'TOhtml'
 
    " converting span with line numbers to be a links
