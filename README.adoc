@@ -1,5 +1,14 @@
 = Vim plugin for saving syntax match rules
 
+== Quick howto
+
+. <<install, install>> the syntax match plugin
+. use <<commands,command>> `:Yellow search_pattern` to highlight some text
+. <<basics,save syntax>> with `:SaveSyntax` or work with file of suffix `.log` or `.txt`
+. quit the file, then open it again
+  * syntax is loaded from saved syntax file and restored (see <<how-works-internally>>)
+
+
 == What the plugin provides
 
 This plugin offers functionality to save `syntax match` rules to an auxiliary file placed beside of file with the original content.
@@ -12,6 +21,7 @@ When using `match` again the previously hightlighted text is not anymore.
 I wanted chance to add highligting dynamically for different patterns.
 Sure there are commands `2match` and `3match` but for me it's not normally enough (see my usecase).
 
+[[install]]
 == How to install
 
 The easiest way to install is use pathogen plugin: http://www.vim.org/scripts/script.php?script_id=2332
@@ -30,7 +40,8 @@ Now the installation of this plugin is easy like
 
 == Usage
 
-=== Basic usage
+[[basics]]
+=== Basics
 
 Whenever you open any `.log` or `.txt` file the plugin is activated.
 Now you can use `syntax match` (`:help syn-match`) command to have specific
@@ -55,6 +66,7 @@ If you open any file of different type you can call command `:SaveSyntax`.
 At that time the syntax match rules are saved to the auxiliary file.
 When you open the same file next time syntax rules are loaded and shown.
 
+[[commands]]
 ==== Helper commands
 
 For you not need to repeatedly write command sentence `:syn match Boolean /pattern/`
@@ -97,6 +109,7 @@ You can write only `:Yellow pattern`. Or more abbreviated only `:Y pattern`.
 |Grey3    |GY3 |`:GY3 pattern` |`:syn match grey3 /pattern/`
 |===
 
+[[how-works-internally]]
 === How works internally
 
 * Plugin defines autocommand for `.log` and `.txt` to call `SaveSyntax()` function at time when such file is closed.
