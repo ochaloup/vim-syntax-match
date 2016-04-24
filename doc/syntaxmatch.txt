@@ -1,0 +1,109 @@
+*syntaxmatch.txt* saving syntax match commands to be used next time
+
+Plugin that loads information of syntax match hightlighting and saves them
+to a auxiliary file (named as .<filename>.syntax). Those syntax highlighting
+rules are then loaded when the file is opened again.
+
+======================================================================
+Contents                                        *SyntaxMatchContents*
+
+    1. Usage    ................ |SyntaxMatchUsage|
+    2. Commands ................ |SyntaxMatchCommands|
+
+
+======================================================================
+Usage                                           *SyntaxMatchUsage*
+
+Open a file and use ':syntax match' to define some hightlight
+pattern. Then use command
+
+  :SaveSyntax
+
+saves the currently used syntax settings to an auxiliary file.
+
+When you open files '.txt' or '.log' then the saving of the
+syntax file will be done automatically.
+
+For detailed info see README.adoc on github page
+https://github.com/ochaloup/vim-syntax-match
+
+
+======================================================================
+Commands                                        *SyntaxMatchCommands*
+
+:SaveSyntax                                     *:SaveSyntax*
+    Saves syntax match of currently opened file. The syntax match
+    hightlighting settings is saved to auxiliary file placed to
+    same directory where the edited file resides.
+    Lookup for file named '.<filename>.syntax'.
+
+:TOhtmlWithLines                               *:TOhtmlWithLines*
+    A thin wrapper over command |TOHtml| which adds links with anchor
+    to the line number shown beside the text. 
+
+:Yellow <pattern>   (abbreviation :Y )         *:Yellow* *:Y*
+    Syntax hightligting a <pattern> with the yellow color
+
+:Yellow2 <pattern>  (abbreviation :Y2)         *:Yellow2* *:Y2*
+    Syntax hightligting a <pattern> with the yellow color
+
+:Yellow3 <pattern>  (abbreviation :Y3)         *:Yellow3* *:Y3*
+    Syntax hightligting a <pattern> with the yellow color
+
+:Red <pattern>      (abbreviation :R)          *:Red* *:R*
+    Syntax hightligting a <pattern> with the red color
+
+:Red2 <pattern>     (abbreviation :R2)         *:Red2* *:R2*
+    Syntax hightligting a <pattern> with the red color
+
+:Red3 <pattern>     (abbreviation :R3)         *:Red3* *:R3*
+    Syntax hightligting a <pattern> with the red color
+
+:Orange <pattern>   (abbreviation :O)          *:Orange* *:O*
+    Syntax hightligting a <pattern> with the orange color
+
+:Orange2 <pattern>  (abbreviation :O2)         *:Orange2* *:O2*
+    Syntax hightligting a <pattern> with the orange color
+
+:Orange3 <pattern>  (abbreviation :O3)         *:Orange3* *:O3*
+    Syntax hightligting a <pattern> with the orange color
+
+:Violet <pattern>   (abbreviation :V)          *:Violet* *:V*
+    Syntax hightligting a <pattern> with the violet color
+
+:Violet2 <pattern>  (abbreviation :V2)         *:Violet2* *:V2*
+    Syntax hightligting a <pattern> with the violet color
+
+:Violet3 <pattern>  (abbreviation :V3)         *:Violet3* *:V3*
+    Syntax hightligting a <pattern> with the violet color
+
+:Violet4 <pattern>  (abbreviation :V4)         *:Violet4* *:V4*
+    Syntax hightligting a <pattern> with the violet color
+
+:Green <pattern>    (abbreviation :G)          *:Green* *:G*
+    Syntax hightligting a <pattern> with the green color
+
+:Green2 <pattern>   (abbreviation :G2)         *:Green2* *:G2*
+    Syntax hightligting a <pattern> with the green color
+
+:Green3 <pattern>   (abbreviation :G3)         *:Green3* *:G3*
+    Syntax hightligting a <pattern> with the green color
+
+:Blue <pattern>     (abbreviation :B)          *:Blue* *:B*
+    Syntax hightligting a <pattern> with the blue color
+
+:Blue2 <pattern>    (abbreviation :B2)         *:Blue2* *:B2*
+    Syntax hightligting a <pattern> with the blue color
+
+:Blue3 <pattern>    (abbreviation :B3)         *:Blue3* *:B3*
+    Syntax hightligting a <pattern> with the blue color
+
+:Grey <pattern>     (abbreviation :GY)         *:Grey* *:GY*
+    Syntax hightligting a <pattern> with the grey color
+
+:Grey2 <pattern>    (abbreviation :GY2)        *:Grey2* *:GY2*
+    Syntax hightligting a <pattern> with the grey color
+
+:Grey3 <pattern>    (abbreviation :GY3)        *:Grey3* *:GY3*
+    Syntax hightligting a <pattern> with the grey color
+
