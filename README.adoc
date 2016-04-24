@@ -17,9 +17,9 @@ Then the syntax highligting will be restored based on the saved rules in the aux
 Beside of having capability to restore defined syntax match rules when specific files is opened again
 it tries to solve trouble that I have with vim `match` command (`:match Comment /pattern/`).
 You can match only one pattern at time.
-When using `match` again the previously hightlighted text is not anymore.
-I wanted chance to add highligting dynamically for different patterns.
-Sure there are commands `2match` and `3match` but for me it's not normally enough (see my usecase).
+When using `match` again the previously hightlighted text is not hightligted anymore.
+I wanted chance to add highligting dynamically for different patterns with the same 'color'.
+Sure there are commands `2match` and `3match` but for me it's not normally enough (see my <<usecase, usecase>>).
 
 [[install]]
 == How to install
@@ -163,6 +163,7 @@ Usage is like
 
 (for switching from one window to other you can use shortcut `CTRL+W W`)
 
+[[usecase]]
 == How do I use it (aka my usecase)
 
 My usecase is for investigation in log files.
