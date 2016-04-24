@@ -11,7 +11,7 @@ function! syntaxmatch#saveSyntax()
   endif
 
   if empty(l:syntax)
-    echom '[syntaxmatch] No syntax that could be saved for file ' . s:getCurFile()
+    " echo '[syntaxmatch] No syntax that could be saved for file ' . s:getCurFile()
     return
   endif
 
