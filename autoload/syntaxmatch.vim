@@ -6,7 +6,12 @@ function! syntaxmatch#saveSyntax()
   
   " echo 'Syntax file is: ' . l:syntaxfile
   if filewritable(s:getSyntaxDir()) != 2
-    echoe 'Cannot write syntax file ' . l:syntaxfile . ' to directory ' . s:getSyntaxDir() . ' as not writable'
+    echoe '[syntaxmatch] Cannot write syntax file ' . l:syntaxfile . ' to directory ' . s:getSyntaxDir() . ' as not writable'
+    return
+  endif
+
+  if empty(l:syntax)
+    echom '[syntaxmatch] No syntax that could be saved for file ' . s:getCurFile()
     return
   endif
 
@@ -34,10 +39,14 @@ function! syntaxmatch#syntaxFileExecute()
 
   let l:filecontent = readfile(l:filePath)
   for l:line in l:filecontent
-    if l:line =~ '^syntax match'
+    let l:line_stripped = s:strip(l:line)
+    if l:line_stripped =~ '^syntax match'
       execute l:line
+    elseif empty(l:line_stripped)
+      " skip empty lines
+      continue
     else
-      echoe 'Cannot execute line "' . l:line . '" as it is not a syntax match command'
+      echoe '[syntaxmatch] Cannot execute line "' . l:line . '" as it is not a syntax match command'
     endif
   endfor
 endfunction
@@ -95,7 +104,7 @@ function! s:getSyntaxAsDict()
       let l:match_pattern = s:strip(l:match_pattern)
 
       if !exists('l:match_color')
-        echoe 'Syntax line "' . l:syntax_line . '" cannot be processed as matched color does not exist'
+        echoe '[syntaxmatch] Syntax line "' . l:syntax_line . '" cannot be processed as matched color does not exist'
         continue
       endif
 
@@ -125,7 +134,7 @@ function! s:isMatch(string, list)
 endfunction
 
 "
-" strip spaces from string
+" strip spaces from string (trimming)
 function! s:strip(input_string)
     return substitute(a:input_string, '^\s*\(.\{-}\)\s*$', '\1', '')
 endfunction
@@ -134,9 +143,14 @@ endfunction
 " getting path to current file and adding prefix and sufix
 function! s:getSyntaxFile()
   let l:curdir = s:getSyntaxDir()
-  let l:curfile = expand("%:t")
+  let l:curfile = s:getCurFile()
   let l:syntaxfile = l:curdir . '/' . '.' . l:curfile . '.syntax' 
   return l:syntaxfile
+endfunction
+
+" return name of the current file
+function! s:getCurFile()
+  return expand("%:t")
 endfunction
 
 " getting path to current file and return its directory
@@ -144,6 +158,7 @@ function! s:getSyntaxDir()
   return expand("%:p:h")
 endfunction
 
+" says if file exists and we can read from it
 function! s:isFileExists(filename)
   if filereadable(a:filename)
     return 1
