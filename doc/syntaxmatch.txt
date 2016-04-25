@@ -9,6 +9,7 @@ Contents                                        *SyntaxMatchContents*
 
     1. Usage    ................ |SyntaxMatchUsage|
     2. Commands ................ |SyntaxMatchCommands|
+    3. Changelog ............... |SyntaxMatchChangelog|
 
 
 ======================================================================
@@ -107,3 +108,13 @@ Commands                                        *SyntaxMatchCommands*
 :Grey3 <pattern>    (abbreviation :GY3)        *:Grey3* *:GY3*
     Syntax hightligting a <pattern> with the grey color
 
+
+
+======================================================================
+Changelog                                       *SyntaxMatchChangelog*
+
+v0.1
+    * Initial release with basic functionaity implemented.
+
+
+======================================================================
