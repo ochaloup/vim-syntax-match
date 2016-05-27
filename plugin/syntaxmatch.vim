@@ -26,6 +26,7 @@ colorscheme syntaxmatch
 " manually saving syntax file that will be loaded next time
 " when file is opened
 command! SaveSyntax         call syntaxmatch#saveSyntax()
+command! LoadSyntax         call syntaxmatch#syntaxFileExecute()
 
 " commands for match specification in faster way
 command! -nargs=1 Yellow    windo! syntax match yellow <f-args>
