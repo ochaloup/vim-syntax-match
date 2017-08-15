@@ -175,3 +175,15 @@ and it's very useful to differentiate them visually by coloring them.
 This is especially good when I need to connect ids of JMS or JDBC with transaction ids.
 I normally uses the same color for the connected identifiers and then I'm able to follow
 what happens in the log file.
+
+== TODOs
+
+The list of things which I think could improve functionality
+
+* adding a function wher `scb` works for all opened windows
+* applying hightligting rules on all opened buffers and windows
+* save hightligting formats at all times buffer is closed/unloaded,
+  currently the `.syntax` file is saved (updated) when vim saves
+* add more predefined colours with abbreviations (`:Y txn.*123`),
+  possibly not only for background hightligting
+* publishing the plugin to Vim site (http://www.vim.org/scripts/add_script.php)
