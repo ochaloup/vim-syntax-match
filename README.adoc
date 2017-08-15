@@ -36,7 +36,7 @@ and loads pathogen plugin each time when a vim is used.
 
 Now the installation of this plugin is easy like
 
-. `git clone git@github.com:ochaloup/vim-syntax-match.git ~/.vim/autoload/vim-syntax-match`
+. `git clone git@github.com:ochaloup/vim-syntax-match.git ~/.vim/bundle/vim-syntax-match`
 
 == Usage
 
