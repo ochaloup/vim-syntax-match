@@ -186,4 +186,3 @@ The list of things which I think could improve functionality
   currently the `.syntax` file is saved (updated) when vim saves
 * add more predefined colours with abbreviations (`:Y txn.*123`),
   possibly not only for background hightligting
-* publishing the plugin to Vim site (http://www.vim.org/scripts/add_script.php)
