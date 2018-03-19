@@ -38,14 +38,19 @@ Now the installation of this plugin is easy like
 
 . `git clone git@github.com:ochaloup/vim-syntax-match.git ~/.vim/bundle/vim-syntax-match`
 
-[WARNING]
+[NOTE]
 ====
-You can have troubles with using syntax highligting or with showing colours. Check that syntax setting is set up `:syntax on`.
-Then you can have permitted only limited number of colors to be displayed. First there could be issue with your terminal
-but as a first instance of help try to check colors to be shown in your vim instance `:set t_Co?` and if it's 8 or lower than 256
-try to change it as `:set t_Co=256` (see http://vim.wikia.com/wiki/256_colors_setup_for_console_Vim#Vim_still_does_not_display_the_color_scheme_correctly)
+You can have troubles with using syntax highligting or with showing colours.
 
-Try to add these lines to your `.vimrc`
+* Check that syntax setting is set up `:syntax on`.
+* You can have permitted only limited number of colors to be displayed.
+  First there could be issue with your terminal.
+  As a first instance of help try to check colors to be shown in your vim instance `:set t_Co?`.
+  If displayed number is 8 or lower than 256
+  then try to change it with command `:set t_Co=256`
+  (see http://vim.wikia.com/wiki/256_colors_setup_for_console_Vim#Vim_still_does_not_display_the_color_scheme_correctly)
+
+Summarized `.vimrc` setup could be 
 ```
 syntax on
 if (&t_Co != 256)

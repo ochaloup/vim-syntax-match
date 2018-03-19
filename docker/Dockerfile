@@ -2,7 +2,7 @@ FROM fedora:27
 # build and runas
 ## docker run -it --rm ochaloup/vim-syntax-match
 
-RUN yum install -y vim git
+RUN yum install -y vim git && yum clean all
 
 # installing the vim-syntax match
 RUN mkdir -p ~/.vim/autoload ~/.vim/bundle 
