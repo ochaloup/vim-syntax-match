@@ -12,7 +12,7 @@ augroup SyntaxMatch
 
   " syntax file won't be automatically created when variable syntax_match_disable is set
   if !exists('g:syntax_match_disable') || !g:syntax_match_disable
-      autocmd! BufWrite,BufDelete,BufLeave,BufWipeout,BufUnload  *.log,*.txt  :call syntaxmatch#saveSyntax()
+      autocmd! BufWrite,BufDelete,BufLeave,BufWinLeave,BufHidden,BufUnload,BufFilePost,VimLeave,WinLeave,CmdwinLeave,TabLeave  *.log,*.txt  :call syntaxmatch#saveSyntax()
   endif
 
   autocmd! BufRead * :call syntaxmatch#syntaxFileExecute()
@@ -26,7 +26,9 @@ colorscheme syntaxmatch
 " manually saving syntax file that will be loaded next time
 " when file is opened
 command! SaveSyntax         call syntaxmatch#saveSyntax()
+command! SS                 call syntaxmatch#saveSyntax()
 command! LoadSyntax         call syntaxmatch#syntaxFileExecute()
+command! LS                 call syntaxmatch#syntaxFileExecute()
 
 " commands for match specification in faster way
 command! -nargs=1 Yellow    windo syntax match yellow <f-args>
@@ -90,5 +92,26 @@ command! -nargs=1 GY3       windo syntax match grey3 <f-args>
 command! -nargs=1 BR        windo syntax match brown <f-args>
 command! -nargs=1 C         windo syntax match cyan <f-args>
 command! -nargs=1 W         windo syntax match white <f-args>
+
+command! -nargs=1 Yellowfg    windo syntax match yellowfg <f-args>
+command! -nargs=1 YF          windo syntax match yellowfg <f-args>
+command! -nargs=1 Redfg       windo syntax match redfg <f-args>
+command! -nargs=1 RF          windo syntax match redfg <f-args>
+command! -nargs=1 Orangefg    windo syntax match orangefg <f-args>
+command! -nargs=1 OF          windo syntax match orangefg <f-args>
+command! -nargs=1 Violetfg    windo syntax match violetfg <f-args>
+command! -nargs=1 VF          windo syntax match violetfg <f-args>
+command! -nargs=1 Greenfg     windo syntax match greenfg <f-args>
+command! -nargs=1 GF          windo syntax match greenfg <f-args>
+command! -nargs=1 Bluefg      windo syntax match bluefg <f-args>
+command! -nargs=1 BF          windo syntax match bluefg <f-args>
+command! -nargs=1 Greyfg      windo syntax match greyfg <f-args>
+command! -nargs=1 GYF          windo syntax match greyfg <f-args>
+command! -nargs=1 Brownfg     windo syntax match brownfg <f-args>
+command! -nargs=1 BRF          windo syntax match brownfg <f-args>
+command! -nargs=1 Cyanfg      windo syntax match cyanfg <f-args>
+command! -nargs=1 CF          windo syntax match cyanfg <f-args>
+command! -nargs=1 Whitefg     windo syntax match whitefg <f-args>
+command! -nargs=1 WF          windo syntax match whitefg <f-args>
 
 let b:is_syntax_match_defined = 1

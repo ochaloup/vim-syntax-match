@@ -52,7 +52,6 @@ function! syntaxmatch#syntaxFileExecute()
 endfunction
 
 
-
 "
 " ==================================
 " ===== Script local functions =====

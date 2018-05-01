@@ -3,8 +3,8 @@
 == Quick howto
 
 . <<install, install>> the syntax match plugin
-. use <<commands,command>> `:Yellow search_pattern` to highlight some text
-. <<basics,save syntax>> with `:SaveSyntax` or work with file of suffix `.log` or `.txt`
+. use <<commands,command>> `:Y search_pattern` to highlight some text
+. <<basics,save syntax>> with `:SS` (or work with file of suffix `.log` or `.txt`)
 . quit the file, then open it again
   * syntax is loaded from saved syntax file and restored (see <<how-works-internally>>)
 
@@ -136,6 +136,16 @@ You can write only `:Yellow pattern`. Or more abbreviated only `:Y pattern`.
 |Brown    |BR  |`:BR pattern`  |`:syn match brown /pattern/`
 |Cyan     |C   |`:C pattern`   |`:syn match cyan /pattern/`
 |White    |W   |`:W pattern`   |`:syn match white /pattern/`
+|Whitefg  |WF  |`:WF pattern`  |`:syn match whitefg /pattern/`
+|Cyanfg   |CF  |`:CYF pattern` |`:syn match cyanfg /pattern/`
+|Brownfg  |BRF |`:BRF pattern` |`:syn match brownfg /pattern/`
+|Greyfg   |GYF |`:GYF pattern` |`:syn match greyfg /pattern/`
+|Bluefg   |BF  |`:BF pattern`  |`:syn match bluefg /pattern/`
+|Greenfg  |GF  |`:GF pattern`  |`:syn match greenfg /pattern/`
+|Violetfg |VF  |`:VF pattern`  |`:syn match violetfg /pattern/`
+|Orangefg |OF  |`:OF pattern`  |`:syn match orangefg /pattern/`
+|Redfg    |RF  |`:RF pattern`  |`:syn match redfg  /pattern/`
+|Yellowfg |YF  |`:YF pattern`  |`:syn match yellowfg  /pattern/`
 |===
 
 [[how-works-internally]]
@@ -209,9 +219,5 @@ what happens in the log file.
 
 The list of things which I think could improve functionality
 
-* adding a function wher `scb` works for all opened windows
+* adding a function where `scb` works for all opened windows
 * applying hightligting rules on all opened buffers and windows
-* save hightligting formats at all times buffer is closed/unloaded,
-  currently the `.syntax` file is saved (updated) when vim saves
-* add more predefined colours with abbreviations (`:Y txn.*123`),
-  possibly not only for background highligting

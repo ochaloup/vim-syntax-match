@@ -25,6 +25,13 @@ saves the currently used syntax settings to an auxiliary file.
 When you open files '.txt' or '.log' then the saving of the
 syntax file will be done automatically.
 
+In addition the plugin defines set of collors and shortcuts
+to hightlight some text in the file. For example for highlighting
+some part of the text with yellow you can use ':Y <patern>'
+which will be transformed to ':syntax match yellow /<pattern>/'.
+Values of the colors used could be found with standard command
+':hightlight' and search for colors starting in row 'yellow<number>'.
+
 For detailed info see README.adoc on github page
 https://github.com/ochaloup/vim-syntax-match
 
@@ -37,6 +44,17 @@ Commands                                        *SyntaxMatchCommands*
     hightlighting settings is saved to auxiliary file placed to
     same directory where the edited file resides.
     Lookup for file named '.<filename>.syntax'.
+
+:SS                                             *:SS*
+    Shortcut function name of original command ':SaveSyntax'.
+
+:LoadSyntax                                     *:LoadSyntax*
+    Loading syntax file from the directory (by default where the original
+    file resides with '.syntax' shortcut. The automatic loading should be
+    done even the original file is not '.log' or '.txt'.
+
+:LS                                             *:LS*
+    Shortcut function name of original command ':LoadSyntax'.
 
 :TOhtmlWithLines                               *:TOhtmlWithLines*
     A thin wrapper over command |TOHtml| which adds links with anchor
@@ -51,6 +69,9 @@ Commands                                        *SyntaxMatchCommands*
 :Yellow3 <pattern>  (abbreviation :Y3)         *:Yellow3* *:Y3*
     Syntax hightligting a <pattern> with the yellow color
 
+:Yellow4 <pattern>  (abbreviation :Y4)         *:Yellow4* *:Y4*
+    Syntax hightligting a <pattern> with the yellow color
+
 :Red <pattern>      (abbreviation :R)          *:Red* *:R*
     Syntax hightligting a <pattern> with the red color
 
@@ -58,6 +79,9 @@ Commands                                        *SyntaxMatchCommands*
     Syntax hightligting a <pattern> with the red color
 
 :Red3 <pattern>     (abbreviation :R3)         *:Red3* *:R3*
+    Syntax hightligting a <pattern> with the red color
+
+:Red4 <pattern>     (abbreviation :R4)         *:Red4* *:R4*
     Syntax hightligting a <pattern> with the red color
 
 :Orange <pattern>   (abbreviation :O)          *:Orange* *:O*
@@ -81,6 +105,9 @@ Commands                                        *SyntaxMatchCommands*
 :Violet4 <pattern>  (abbreviation :V4)         *:Violet4* *:V4*
     Syntax hightligting a <pattern> with the violet color
 
+:Violet5 <pattern>  (abbreviation :V5)         *:Violet5* *:V5*
+    Syntax hightligting a <pattern> with the violet color
+
 :Green <pattern>    (abbreviation :G)          *:Green* *:G*
     Syntax hightligting a <pattern> with the green color
 
@@ -88,6 +115,9 @@ Commands                                        *SyntaxMatchCommands*
     Syntax hightligting a <pattern> with the green color
 
 :Green3 <pattern>   (abbreviation :G3)         *:Green3* *:G3*
+    Syntax hightligting a <pattern> with the green color
+
+:Green4 <pattern>   (abbreviation :G4)         *:Green4* *:G4*
     Syntax hightligting a <pattern> with the green color
 
 :Blue <pattern>     (abbreviation :B)          *:Blue* *:B*
@@ -99,6 +129,9 @@ Commands                                        *SyntaxMatchCommands*
 :Blue3 <pattern>    (abbreviation :B3)         *:Blue3* *:B3*
     Syntax hightligting a <pattern> with the blue color
 
+:Blue4 <pattern>    (abbreviation :B4)         *:Blue4* *:B4*
+    Syntax hightligting a <pattern> with the blue color
+
 :Grey <pattern>     (abbreviation :GY)         *:Grey* *:GY*
     Syntax hightligting a <pattern> with the grey color
 
@@ -108,6 +141,68 @@ Commands                                        *SyntaxMatchCommands*
 :Grey3 <pattern>    (abbreviation :GY3)        *:Grey3* *:GY3*
     Syntax hightligting a <pattern> with the grey color
 
+:Brow <pattern>    (abbreviation :BR)        *:Brown* *:BR*
+    Syntax hightligting a <pattern> with the brown color
+
+:Cyan <pattern>    (abbreviation :C)        *:Cyan* *:C*
+    Syntax hightligting a <pattern> with the cyan color
+
+:White <pattern>    (abbreviation :W)        *:White* *:W*
+    Syntax hightligting a <pattern> with the white color
+
+:Browfg <pattern>    (abbreviation :BRF)        *:Brownfg* *:BRF*
+    Syntax hightligting a <pattern> with the foreground brown color
+
+:Cyanfg <pattern>    (abbreviation :CF)        *:Cyanfg* *:CF*
+    Syntax hightligting a <pattern> with the foreground cyan color
+
+:Whitefg <pattern>    (abbreviation :WF)        *:Whitefg* *:WF*
+    Syntax hightligting a <pattern> with the foreground white color
+
+Greyfg <pattern>    (abbreviation :GRF)        *:Gretfg* *:GRF*
+    Syntax hightligting a <pattern> with the foreground grey color
+
+Bluefg <pattern>    (abbreviation :BF)        *:Bluefg* *:BF*
+    Syntax hightligting a <pattern> with the foreground blue color
+
+Greenfg <pattern>    (abbreviation :GF)        *:Greenfg* *:GF*
+    Syntax hightligting a <pattern> with the foreground green color
+
+Violetfg <pattern>    (abbreviation :VF)        *:Violetfg* *:VF*
+    Syntax hightligting a <pattern> with the foreground violet color
+
+Orangefg <pattern>    (abbreviation :OF)        *:Orangefg* *:OF*
+    Syntax hightligting a <pattern> with the foreground orange color
+
+Redfg <pattern>    (abbreviation :RF)        *:Redfg* *:RF*
+    Syntax hightligting a <pattern> with the foreground red color
+
+Yellowfg <pattern>    (abbreviation :YF)        *:Yellowfg* *:YF*
+    Syntax hightligting a <pattern> with the foreground yellow color
+
+
+
+======================================================================
+TroubleShooting                           *SyntaxMatchTroubleshotting*
+
+When you can have troubles with using syntax highligting
+or with showing colours.
+
+1. Check that syntax setting is set up ':syntax on'.
+2. Check limitation on displayed number of colors. This could be
+   an issue with your terminal. Check colors to be shown in your Vim
+   ':set t_Co?'. If displayed number is '8' or lower than '256'
+   then try to change it with command ':set t_Co=256'
+   (see http://vim.wikia.com/wiki/256_colors_setup_for_console_Vim#Vim_still_does_not_display_the_color_scheme_correctly)
+
+Summarized '.vimrc' setup could be
+
+'''
+syntax on
+if (&t_Co != 256)
+  set t_Co=256
+endif
+'''
 
 
 ======================================================================
