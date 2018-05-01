@@ -56,6 +56,10 @@ Commands                                        *SyntaxMatchCommands*
 :LS                                             *:LS*
     Shortcut function name of original command ':LoadSyntax'.
 
+:WSCB                                           *:WSCB*
+    Locking scroll binding, doing abolutely the same as you would run
+    `windo set scb`.    
+
 :TOhtmlWithLines                               *:TOhtmlWithLines*
     A thin wrapper over command |TOHtml| which adds links with anchor
     to the line number shown beside the text. 
