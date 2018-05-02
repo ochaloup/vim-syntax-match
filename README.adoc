@@ -89,7 +89,7 @@ Save the file and quit.
 Next time when you open the file the syntax will be loaded. +
 So enjoy!
 
-If you open any file of different type you can call command `:SaveSyntax`.
+If you open any file of different type you can call command `:SaveSyntax` (shortcut command name is `:SS`).
 At that time the syntax match rules are saved to the auxiliary file.
 When you open the same file next time syntax rules are loaded and shown.
 
@@ -166,8 +166,8 @@ You can write only `:Yellow pattern`. Or more abbreviated only `:Y pattern`.
 [[how-works-internally]]
 === How works internally
 
-* Plugin defines autocommand for `.log` and `.txt` to call `SaveSyntax()` function at time when such file is closed.
-* `SaveSyntax()` function calls command `:syntax` which list all currently defined syntax highlighting rules.
+* Plugin defines autocommand for `.log` and `.txt` to call function `syntaxmatch#saveSyntax()` function at time when such file is closed.
+* `syntaxmatch#saveSyntax()` function calls Vim internal command `:syntax` which list all currently defined syntax highlighting rules.
 * Function filter only those which uses `match` (see http://learnvimscriptthehardway.stevelosh.com/chapters/46.html or `:help syn-match`).
 * It converts output of `:syntax` command and creates valid `syntax match <color> /pattern/` commands.
 * These commands are then saved to auxiliary file with name pattern `.<original_file_name>.syntax`.
@@ -195,10 +195,12 @@ Rules could beat each other when their patterns overlaps.
 
 === Hightligting to HTML
 
-Vim comes with handy function `:TOhtml` which takes your text document and convert it to html file.
+Vim comes with handy command `:TOhtml` which takes your text document and convert it to html file.
 That html file is highighted as you defined it with `syntax` commands.
-This plugin offers small enhancement to that function when called `:TOHtmlWithLines` you can click
-on the shown line numbers to get link with anchor (`#`).
+This plugin offers small enhancement to the internal command that adds clickable line numbers.
+When command `:TOHtmlWithLines` is executed you can click
+on the shown line numbers to get link with anchor (`#`)
+which can be then shared with a co-worker.
 
 === Synchronized scrolling in vim windows
 
@@ -217,9 +219,9 @@ Usage is like
 
 (for switching from one window to other you can use shortcut `CTRL+W W`)
 
-The plugin adds special user function named `SCB` which you can run as `:SCB`
+The plugin adds special user command named `SCB` which you can run as `:SCB`
 and it's functionality is to run scroll bind on all opened windows.
-This user function does the same as when you run manually `:windo set scb`.
+This user command does the same as when you run manually `:windo set scb`.
 
 
 [[usecase]]
