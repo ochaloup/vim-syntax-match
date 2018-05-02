@@ -1,12 +1,18 @@
 = Vim plugin for saving syntax match rules
 
+== What is it good for
+
+If you do log investigation it's handy to differentiate identifiers with colors. +
+When you close `Vim` and later open the log file again it's fine to have preserved the colors.
+
 == Quick howto
 
 . <<install, install>> the syntax match plugin
+. open file with suffix `.log` or `.txt`
 . use <<commands,command>> `:Y search_pattern` to highlight some text
-. <<basics,save syntax>> with `:SS` (or work with file of suffix `.log` or `.txt`)
+  * you've used the prepared shortcuts for coloring log parts
 . quit the file, then open it again
-  * syntax is loaded from saved syntax file and restored (see <<how-works-internally>>)
+  * syntax is loaded from a saved syntax file and restored for you (see <<how-works-internally>>)
 
 
 == What the plugin provides
@@ -213,7 +219,7 @@ Usage is like
 
 The plugin adds special user function named `SCB` which you can run as `:SCB`
 and it's functionality is to run scroll bind on all opened windows.
-The user function does the same as `:windo set scb`.
+This user function does the same as when you run manually `:windo set scb`.
 
 
 [[usecase]]
