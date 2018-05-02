@@ -56,7 +56,7 @@ Commands                                        *SyntaxMatchCommands*
 :LS                                             *:LS*
     Shortcut function name of original command ':LoadSyntax'.
 
-:WSCB                                           *:WSCB*
+:SCB                                            *:SCB*
     Locking scroll binding, doing abolutely the same as you would run
     `windo set scb`.    
 

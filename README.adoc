@@ -202,7 +202,7 @@ Usage is like
 
 (for switching from one window to other you can use shortcut `CTRL+W W`)
 
-The plugin adds special user function named `WSCB` which you can run as `:WSCB`
+The plugin adds special user function named `SCB` which you can run as `:SCB`
 and it's functionality is to run scroll bind on all opened windows.
 The user function does the same as `:windo set scb`.
 

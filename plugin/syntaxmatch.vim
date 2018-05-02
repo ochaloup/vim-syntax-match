@@ -31,7 +31,7 @@ command! LoadSyntax         call syntaxmatch#syntaxFileExecute()
 command! LS                 call syntaxmatch#syntaxFileExecute()
 
 " providing easier run for scrollball bind buffer to all windows
-command! WSCB               windo set scb
+command! SCB                windo set scb
 
 " commands for match specification in faster way
 command! -nargs=1 Yellow    windo syntax match yellow <f-args>
