@@ -12,7 +12,7 @@ augroup SyntaxMatch
 
   " syntax file won't be automatically created when variable syntax_match_disable is set
   if !exists('g:syntax_match_disable') || !g:syntax_match_disable
-      autocmd! BufWrite,BufDelete,BufLeave,BufWinLeave,BufHidden,BufUnload,BufFilePost,VimLeave,WinLeave,CmdwinLeave,TabLeave  *.log,*.txt  :call syntaxmatch#saveSyntax()
+      autocmd! BufWrite,BufLeave,BufWinLeave,BufHidden,BufUnload,BufFilePost,VimLeave,WinLeave,CmdwinLeave,TabLeave  *.log,*.txt  :call syntaxmatch#saveSyntax()
   endif
 
   autocmd! BufRead * :call syntaxmatch#syntaxFileExecute()
@@ -109,12 +109,25 @@ command! -nargs=1 GF          windo syntax match greenfg <f-args>
 command! -nargs=1 Bluefg      windo syntax match bluefg <f-args>
 command! -nargs=1 BF          windo syntax match bluefg <f-args>
 command! -nargs=1 Greyfg      windo syntax match greyfg <f-args>
-command! -nargs=1 GYF          windo syntax match greyfg <f-args>
+command! -nargs=1 GYF         windo syntax match greyfg <f-args>
 command! -nargs=1 Brownfg     windo syntax match brownfg <f-args>
-command! -nargs=1 BRF          windo syntax match brownfg <f-args>
+command! -nargs=1 BRF         windo syntax match brownfg <f-args>
 command! -nargs=1 Cyanfg      windo syntax match cyanfg <f-args>
 command! -nargs=1 CF          windo syntax match cyanfg <f-args>
 command! -nargs=1 Whitefg     windo syntax match whitefg <f-args>
 command! -nargs=1 WF          windo syntax match whitefg <f-args>
+
+command! -nargs=1 YA          windo call syntaxmatch#doInAllBuffers('syntax match yellow /' . <f-args> . '/')
+command! -nargs=1 RA          windo call syntaxmatch#doInAllBuffers('syntax match red /' . <f-args> . '/')
+command! -nargs=1 OA          windo call syntaxmatch#doInAllBuffers('syntax match orange /' . <f-args> . '/')
+command! -nargs=1 GA          windo call syntaxmatch#doInAllBuffers('syntax match green /' . <f-args> . '/')
+command! -nargs=1 BA          windo call syntaxmatch#doInAllBuffers('syntax match blue /' . <f-args> . '/')
+command! -nargs=1 GYA         windo call syntaxmatch#doInAllBuffers('syntax match grey /' . <f-args> . '/')
+command! -nargs=1 CA          windo call syntaxmatch#doInAllBuffers('syntax match cyan /' . <f-args> . '/')
+command! -nargs=1 BRA         windo call syntaxmatch#doInAllBuffers('syntax match brown /' . <f-args> . '/')
+command! -nargs=1 WA          windo call syntaxmatch#doInAllBuffers('syntax match white /' . <f-args> . '/')
+ 
+command! -nargs=0 SyntaxClearAll    windo call syntaxmatch#doInAllBuffers('syntax clear')
+command! ClearAllSyntax             SyntaxClearAll
 
 let b:is_syntax_match_defined = 1

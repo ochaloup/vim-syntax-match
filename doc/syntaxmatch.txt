@@ -39,26 +39,23 @@ https://github.com/ochaloup/vim-syntax-match
 ======================================================================
 Commands                                        *SyntaxMatchCommands*
 
-:SaveSyntax                                     *:SaveSyntax*
+:SaveSyntax                                     *:SaveSyntax* *:SS*
     Saves syntax match of currently opened file. The syntax match
     hightlighting settings is saved to auxiliary file placed to
     same directory where the edited file resides.
     Lookup for file named '.<filename>.syntax'.
 
-:SS                                             *:SS*
-    Shortcut function name of original command ':SaveSyntax'.
-
-:LoadSyntax                                     *:LoadSyntax*
+:LoadSyntax                                     *:LoadSyntax* *:LS*
     Loading syntax file from the directory (by default where the original
     file resides with '.syntax' shortcut. The automatic loading should be
     done even the original file is not '.log' or '.txt'.
 
-:LS                                             *:LS*
-    Shortcut function name of original command ':LoadSyntax'.
-
 :SCB                                            *:SCB*
     Locking scroll binding, doing abolutely the same as you would run
-    `windo set scb`.    
+    'windo set scb'.    
+
+:ClearAllSyntax                                 *:ClearAllSyntax*, *SyntaxClearAll*
+    Calling 'syntax clear' on all opened buffers.
 
 :TOhtmlWithLines                               *:TOhtmlWithLines*
     A thin wrapper over command |TOHtml| which adds links with anchor
@@ -184,6 +181,29 @@ Redfg <pattern>    (abbreviation :RF)        *:Redfg* *:RF*
 Yellowfg <pattern>    (abbreviation :YF)        *:Yellowfg* *:YF*
     Syntax hightligting a <pattern> with the foreground yellow color
 
+:BRA <pattern>                                  *:BRA*
+    Syntax hightligting a <pattern> with the brown color applied on all opened buffers
+
+:GYA <pattern>                                  *:GYA*
+    Syntax hightligting a <pattern> with the grey color applied on all opened buffers
+
+:YA <pattern>                                   *:YA*
+    Syntax hightligting a <pattern> with the yellow color applied on all opened buffers
+
+:RA <pattern>                                   *:RA*
+    Syntax hightligting a <pattern> with the red color applied on all opened buffers
+
+:GA <pattern>                                   *:GA*
+    Syntax hightligting a <pattern> with the green color applied on all opened buffers
+
+:BA <pattern>                                   *:BA*
+    Syntax hightligting a <pattern> with the blue color applied on all opened buffers
+
+:CA <pattern>                                   *:CA*
+    Syntax hightligting a <pattern> with the cyan color applied on all opened buffers
+
+:WA <pattern>                                   *:WA*
+    Syntax hightligting a <pattern> with the white color applied on all opened buffers
 
 
 ======================================================================

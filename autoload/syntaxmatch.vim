@@ -1,6 +1,11 @@
 
 " saving syntax to a file named by predefined name
 function! syntaxmatch#saveSyntax()
+  " the current buffer is a 'help buffer' then not to save any syntax
+  if getbufvar(bufnr("%"), "&filetype") == 'help'
+    return
+  endif
+
   let l:syntax = s:getSyntaxCommands()
   let l:syntaxfile = s:getSyntaxFile()
   
@@ -11,7 +16,9 @@ function! syntaxmatch#saveSyntax()
   endif
 
   if empty(l:syntax)
-    " echo '[syntaxmatch] No syntax that could be saved for file ' . s:getCurFile()
+    " echo '[syntaxmatch] Syntax is empty, saving empty content to l:syntaxfile'
+    execute 'redir! >' . l:syntaxfile
+    execute 'redir END'
     return
   endif
 
@@ -51,6 +58,24 @@ function! syntaxmatch#syntaxFileExecute()
   endfor
 endfunction
 
+" looping over all existing buffers executing command in each of them
+function! syntaxmatch#doInAllBuffers(syntaxCommand)
+  let cursorStartPosition = getpos('.')
+  let current = bufnr("%")
+  let buffers = filter(range(1, bufnr('$')), 'bufexists(v:val)')
+
+  for buffer in buffers
+    if getbufvar(buffer, "&filetype") == 'help'
+      " there was help skipping
+      continue
+    endif
+    silent! execute 'buffer ' . buffer
+    execute a:syntaxCommand
+    " echo 'buffer switched to ' . buffer . ', executing "' . a:syntaxCommand . '"'
+  endfor
+  silent! execute 'buffer ' . current
+  call setpos('.', cursorStartPosition)
+endfunction
 
 "
 " ==================================

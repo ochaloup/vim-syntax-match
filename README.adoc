@@ -146,6 +146,15 @@ You can write only `:Yellow pattern`. Or more abbreviated only `:Y pattern`.
 |Orangefg |OF  |`:OF pattern`  |`:syn match orangefg /pattern/`
 |Redfg    |RF  |`:RF pattern`  |`:syn match redfg  /pattern/`
 |Yellowfg |YF  |`:YF pattern`  |`:syn match yellowfg  /pattern/`
+|         |YA  |`:YA pattern`  |`:syn match yellow  /pattern/` in all opened buffers
+|         |RA  |`:RA pattern`  |`:syn match red /pattern/` in all opened buffers
+|         |GA  |`:GA pattern`  |`:syn match green /pattern/` in all opened buffers
+|         |BA  |`:BA pattern`  |`:syn match blue /pattern/` in all opened buffers
+|         |GYA |`:GYA pattern` |`:syn match grey /pattern/` in all opened buffers
+|         |BRA |`:BRA pattern` |`:syn match brown /pattern/` in all opened buffers
+|         |CA  |`:CA pattern`  |`:syn match cyan /pattern/` in all opened buffers
+|         |WA  |`:WA pattern`  |`:syn match white /pattern/` in all opened buffers
+|ClearAllSyntax|SyntaxClearAll |`:clear syntax` | clearing syntax in all opened buffers
 |===
 
 [[how-works-internally]]
@@ -220,8 +229,3 @@ This is especially good when I need to connect ids of JMS or JDBC with transacti
 I normally uses the same color for the connected identifiers and then I'm able to follow
 what happens in the log file.
 
-== TODOs
-
-The list of things which I think could improve functionality
-
-* applying hightligting rules on all opened buffers and windows
