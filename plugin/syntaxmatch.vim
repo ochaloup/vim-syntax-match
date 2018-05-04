@@ -64,6 +64,9 @@ command! -nargs=1 Grey3     windo syntax match grey3 <f-args> containedin=ALL
 command! -nargs=1 Brown     windo syntax match brown <f-args> containedin=ALL
 command! -nargs=1 Cyan      windo syntax match cyan <f-args> containedin=ALL
 command! -nargs=1 White     windo syntax match white <f-args> containedin=ALL
+command! -nargs=1 Pink      windo syntax match pink <f-args> containedin=ALL
+command! -nargs=1 Pink2     windo syntax match pink2 <f-args> containedin=ALL
+command! -nargs=1 Pink3     windo syntax match pink3 <f-args> containedin=ALL
 
 command! -nargs=1 Y         windo syntax match yellow <f-args> containedin=ALL
 command! -nargs=1 Y2        windo syntax match yellow2 <f-args> containedin=ALL
@@ -95,6 +98,9 @@ command! -nargs=1 GY3       windo syntax match grey3 <f-args> containedin=ALL
 command! -nargs=1 BR        windo syntax match brown <f-args> containedin=ALL
 command! -nargs=1 C         windo syntax match cyan <f-args> containedin=ALL
 command! -nargs=1 W         windo syntax match white <f-args> containedin=ALL
+command! -nargs=1 P         windo syntax match pink <f-args> containedin=ALL
+command! -nargs=1 P2        windo syntax match pink2 <f-args> containedin=ALL
+command! -nargs=1 P3        windo syntax match pink3 <f-args> containedin=ALL
 
 command! -nargs=1 Yellowfg    windo syntax match yellowfg <f-args> containedin=ALL
 command! -nargs=1 YF          windo syntax match yellowfg <f-args> containedin=ALL
@@ -116,6 +122,8 @@ command! -nargs=1 Cyanfg      windo syntax match cyanfg <f-args> containedin=ALL
 command! -nargs=1 CF          windo syntax match cyanfg <f-args> containedin=ALL
 command! -nargs=1 Whitefg     windo syntax match whitefg <f-args> containedin=ALL
 command! -nargs=1 WF          windo syntax match whitefg <f-args> containedin=ALL
+command! -nargs=1 Pinkfg      windo syntax match pinkfg <f-args> containedin=ALL
+command! -nargs=1 PF          windo syntax match pinkfg <f-args> containedin=ALL
 
 command! -nargs=1 YA          windo call syntaxmatch#doInAllBuffers('syntax match yellow /' . <f-args> . '/ containedin=ALL')
 command! -nargs=1 RA          windo call syntaxmatch#doInAllBuffers('syntax match red /' . <f-args> . '/ containedin=ALL')
@@ -126,6 +134,7 @@ command! -nargs=1 GYA         windo call syntaxmatch#doInAllBuffers('syntax matc
 command! -nargs=1 CA          windo call syntaxmatch#doInAllBuffers('syntax match cyan /' . <f-args> . '/ containedin=ALL')
 command! -nargs=1 BRA         windo call syntaxmatch#doInAllBuffers('syntax match brown /' . <f-args> . '/ containedin=ALL')
 command! -nargs=1 WA          windo call syntaxmatch#doInAllBuffers('syntax match white /' . <f-args> . '/ containedin=ALL')
+command! -nargs=1 PA          windo call syntaxmatch#doInAllBuffers('syntax match pink /' . <f-args> . '/ containedin=ALL')
  
 command! -nargs=0 SyntaxClearAll    windo call syntaxmatch#doInAllBuffers('syntax clear')
 command! ClearAllSyntax             SyntaxClearAll

@@ -29,6 +29,9 @@ hi grey3 guibg=#d0d0d0 ctermbg=252
 hi brown guibg=brown ctermbg=brown
 hi cyan  guibg=cyan  ctermbg=cyan
 hi white  guibg=white  ctermbg=white
+hi pink guibg=#ffd7d7 ctermbg=224
+hi pink2 guibg=#ffafaf ctermbg=217
+hi pink3 guibg=#ff5faf ctermbg=205
 
 hi yellowfg    guifg=yellow ctermfg=yellow
 hi redfg       guifg=red ctermfg=red
@@ -40,3 +43,4 @@ hi greyfg      guifg=#808080 ctermfg=8
 hi brownfg     guifg=brown ctermfg=brown
 hi cyanfg      guifg=cyan  ctermfg=cyan
 hi whitefg     guifg=white  ctermfg=white
+hi pinkfg      guifg=#ffd7d7 ctermfg=224
