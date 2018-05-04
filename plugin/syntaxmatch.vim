@@ -34,98 +34,98 @@ command! LS                 call syntaxmatch#syntaxFileExecute()
 command! SCB                windo set scb
 
 " commands for match specification in faster way
-command! -nargs=1 Yellow    windo syntax match yellow <f-args>
-command! -nargs=1 Yellow2   windo syntax match yellow2 <f-args>
-command! -nargs=1 Yellow3   windo syntax match yellow3 <f-args>
-command! -nargs=1 Yellow4   windo syntax match yellow4 <f-args>
-command! -nargs=1 Red       windo syntax match red <f-args>
-command! -nargs=1 Red2      windo syntax match red2 <f-args>
-command! -nargs=1 Red3      windo syntax match red3 <f-args>
-command! -nargs=1 Red4      windo syntax match red4 <f-args>
-command! -nargs=1 Orange    windo syntax match orange <f-args>
-command! -nargs=1 Orange2   windo syntax match orange2 <f-args>
-command! -nargs=1 Orange3   windo syntax match orange3 <f-args>
-command! -nargs=1 Violet    windo syntax match violet <f-args>
-command! -nargs=1 Violet2   windo syntax match violet2 <f-args>
-command! -nargs=1 Violet3   windo syntax match violet3 <f-args>
-command! -nargs=1 Violet4   windo syntax match violet4 <f-args>
-command! -nargs=1 Violet5   windo syntax match violet5 <f-args>
-command! -nargs=1 Green     windo syntax match green <f-args>
-command! -nargs=1 Green2    windo syntax match green2 <f-args>
-command! -nargs=1 Green3    windo syntax match green3 <f-args>
-command! -nargs=1 Green4    windo syntax match green4 <f-args>
-command! -nargs=1 Blue      windo syntax match blue <f-args>
-command! -nargs=1 Blue2     windo syntax match blue2 <f-args>
-command! -nargs=1 Blue3     windo syntax match blue3 <f-args>
-command! -nargs=1 Blue4     windo syntax match blue4 <f-args>
-command! -nargs=1 Grey      windo syntax match grey <f-args>
-command! -nargs=1 Grey2     windo syntax match grey2 <f-args>
-command! -nargs=1 Grey3     windo syntax match grey3 <f-args>
-command! -nargs=1 Brown     windo syntax match brown <f-args>
-command! -nargs=1 Cyan      windo syntax match cyan <f-args>
-command! -nargs=1 White     windo syntax match white <f-args>
+command! -nargs=1 Yellow    windo syntax match yellow <f-args> containedin=ALL
+command! -nargs=1 Yellow2   windo syntax match yellow2 <f-args> containedin=ALL
+command! -nargs=1 Yellow3   windo syntax match yellow3 <f-args> containedin=ALL
+command! -nargs=1 Yellow4   windo syntax match yellow4 <f-args> containedin=ALL
+command! -nargs=1 Red       windo syntax match red <f-args> containedin=ALL
+command! -nargs=1 Red2      windo syntax match red2 <f-args> containedin=ALL
+command! -nargs=1 Red3      windo syntax match red3 <f-args> containedin=ALL
+command! -nargs=1 Red4      windo syntax match red4 <f-args> containedin=ALL
+command! -nargs=1 Orange    windo syntax match orange <f-args> containedin=ALL
+command! -nargs=1 Orange2   windo syntax match orange2 <f-args> containedin=ALL
+command! -nargs=1 Orange3   windo syntax match orange3 <f-args> containedin=ALL
+command! -nargs=1 Violet    windo syntax match violet <f-args> containedin=ALL
+command! -nargs=1 Violet2   windo syntax match violet2 <f-args> containedin=ALL
+command! -nargs=1 Violet3   windo syntax match violet3 <f-args> containedin=ALL
+command! -nargs=1 Violet4   windo syntax match violet4 <f-args> containedin=ALL
+command! -nargs=1 Violet5   windo syntax match violet5 <f-args> containedin=ALL
+command! -nargs=1 Green     windo syntax match green <f-args> containedin=ALL
+command! -nargs=1 Green2    windo syntax match green2 <f-args> containedin=ALL
+command! -nargs=1 Green3    windo syntax match green3 <f-args> containedin=ALL
+command! -nargs=1 Green4    windo syntax match green4 <f-args> containedin=ALL
+command! -nargs=1 Blue      windo syntax match blue <f-args> containedin=ALL
+command! -nargs=1 Blue2     windo syntax match blue2 <f-args> containedin=ALL
+command! -nargs=1 Blue3     windo syntax match blue3 <f-args> containedin=ALL
+command! -nargs=1 Blue4     windo syntax match blue4 <f-args> containedin=ALL
+command! -nargs=1 Grey      windo syntax match grey <f-args> containedin=ALL
+command! -nargs=1 Grey2     windo syntax match grey2 <f-args> containedin=ALL
+command! -nargs=1 Grey3     windo syntax match grey3 <f-args> containedin=ALL
+command! -nargs=1 Brown     windo syntax match brown <f-args> containedin=ALL
+command! -nargs=1 Cyan      windo syntax match cyan <f-args> containedin=ALL
+command! -nargs=1 White     windo syntax match white <f-args> containedin=ALL
 
-command! -nargs=1 Y         windo syntax match yellow <f-args>
-command! -nargs=1 Y2        windo syntax match yellow2 <f-args>
-command! -nargs=1 Y3        windo syntax match yellow3 <f-args>
-command! -nargs=1 Y4        windo syntax match yellow4 <f-args>
-command! -nargs=1 R         windo syntax match red <f-args>
-command! -nargs=1 R2        windo syntax match red2 <f-args>
-command! -nargs=1 R3        windo syntax match red3 <f-args>
-command! -nargs=1 R4        windo syntax match red4 <f-args>
-command! -nargs=1 O         windo syntax match orange <f-args>
-command! -nargs=1 O2        windo syntax match orange2 <f-args>
-command! -nargs=1 O3        windo syntax match orange3 <f-args>
-command! -nargs=1 V         windo syntax match violet <f-args>
-command! -nargs=1 V2        windo syntax match violet2 <f-args>
-command! -nargs=1 V3        windo syntax match violet3 <f-args>
-command! -nargs=1 V4        windo syntax match violet4 <f-args>
-command! -nargs=1 V5        windo syntax match violet5 <f-args>
-command! -nargs=1 G         windo syntax match green <f-args>
-command! -nargs=1 G2        windo syntax match green2 <f-args>
-command! -nargs=1 G3        windo syntax match green3 <f-args>
-command! -nargs=1 G4        windo syntax match green4 <f-args>
-command! -nargs=1 B         windo syntax match blue <f-args>
-command! -nargs=1 B2        windo syntax match blue2 <f-args>
-command! -nargs=1 B3        windo syntax match blue3 <f-args>
-command! -nargs=1 B4        windo syntax match blue4 <f-args>
-command! -nargs=1 GY        windo syntax match grey <f-args>
-command! -nargs=1 GY2       windo syntax match grey2 <f-args>
-command! -nargs=1 GY3       windo syntax match grey3 <f-args>
-command! -nargs=1 BR        windo syntax match brown <f-args>
-command! -nargs=1 C         windo syntax match cyan <f-args>
-command! -nargs=1 W         windo syntax match white <f-args>
+command! -nargs=1 Y         windo syntax match yellow <f-args> containedin=ALL
+command! -nargs=1 Y2        windo syntax match yellow2 <f-args> containedin=ALL
+command! -nargs=1 Y3        windo syntax match yellow3 <f-args> containedin=ALL
+command! -nargs=1 Y4        windo syntax match yellow4 <f-args> containedin=ALL
+command! -nargs=1 R         windo syntax match red <f-args> containedin=ALL
+command! -nargs=1 R2        windo syntax match red2 <f-args> containedin=ALL
+command! -nargs=1 R3        windo syntax match red3 <f-args> containedin=ALL
+command! -nargs=1 R4        windo syntax match red4 <f-args> containedin=ALL
+command! -nargs=1 O         windo syntax match orange <f-args> containedin=ALL
+command! -nargs=1 O2        windo syntax match orange2 <f-args> containedin=ALL
+command! -nargs=1 O3        windo syntax match orange3 <f-args> containedin=ALL
+command! -nargs=1 V         windo syntax match violet <f-args> containedin=ALL
+command! -nargs=1 V2        windo syntax match violet2 <f-args> containedin=ALL
+command! -nargs=1 V3        windo syntax match violet3 <f-args> containedin=ALL
+command! -nargs=1 V4        windo syntax match violet4 <f-args> containedin=ALL
+command! -nargs=1 V5        windo syntax match violet5 <f-args> containedin=ALL
+command! -nargs=1 G         windo syntax match green <f-args> containedin=ALL
+command! -nargs=1 G2        windo syntax match green2 <f-args> containedin=ALL
+command! -nargs=1 G3        windo syntax match green3 <f-args> containedin=ALL
+command! -nargs=1 G4        windo syntax match green4 <f-args> containedin=ALL
+command! -nargs=1 B         windo syntax match blue <f-args> containedin=ALL
+command! -nargs=1 B2        windo syntax match blue2 <f-args> containedin=ALL
+command! -nargs=1 B3        windo syntax match blue3 <f-args> containedin=ALL
+command! -nargs=1 B4        windo syntax match blue4 <f-args> containedin=ALL
+command! -nargs=1 GY        windo syntax match grey <f-args> containedin=ALL
+command! -nargs=1 GY2       windo syntax match grey2 <f-args> containedin=ALL
+command! -nargs=1 GY3       windo syntax match grey3 <f-args> containedin=ALL
+command! -nargs=1 BR        windo syntax match brown <f-args> containedin=ALL
+command! -nargs=1 C         windo syntax match cyan <f-args> containedin=ALL
+command! -nargs=1 W         windo syntax match white <f-args> containedin=ALL
 
-command! -nargs=1 Yellowfg    windo syntax match yellowfg <f-args>
-command! -nargs=1 YF          windo syntax match yellowfg <f-args>
-command! -nargs=1 Redfg       windo syntax match redfg <f-args>
-command! -nargs=1 RF          windo syntax match redfg <f-args>
-command! -nargs=1 Orangefg    windo syntax match orangefg <f-args>
-command! -nargs=1 OF          windo syntax match orangefg <f-args>
-command! -nargs=1 Violetfg    windo syntax match violetfg <f-args>
-command! -nargs=1 VF          windo syntax match violetfg <f-args>
-command! -nargs=1 Greenfg     windo syntax match greenfg <f-args>
-command! -nargs=1 GF          windo syntax match greenfg <f-args>
-command! -nargs=1 Bluefg      windo syntax match bluefg <f-args>
-command! -nargs=1 BF          windo syntax match bluefg <f-args>
-command! -nargs=1 Greyfg      windo syntax match greyfg <f-args>
-command! -nargs=1 GYF         windo syntax match greyfg <f-args>
-command! -nargs=1 Brownfg     windo syntax match brownfg <f-args>
-command! -nargs=1 BRF         windo syntax match brownfg <f-args>
-command! -nargs=1 Cyanfg      windo syntax match cyanfg <f-args>
-command! -nargs=1 CF          windo syntax match cyanfg <f-args>
-command! -nargs=1 Whitefg     windo syntax match whitefg <f-args>
-command! -nargs=1 WF          windo syntax match whitefg <f-args>
+command! -nargs=1 Yellowfg    windo syntax match yellowfg <f-args> containedin=ALL
+command! -nargs=1 YF          windo syntax match yellowfg <f-args> containedin=ALL
+command! -nargs=1 Redfg       windo syntax match redfg <f-args> containedin=ALL
+command! -nargs=1 RF          windo syntax match redfg <f-args> containedin=ALL
+command! -nargs=1 Orangefg    windo syntax match orangefg <f-args> containedin=ALL
+command! -nargs=1 OF          windo syntax match orangefg <f-args> containedin=ALL
+command! -nargs=1 Violetfg    windo syntax match violetfg <f-args> containedin=ALL
+command! -nargs=1 VF          windo syntax match violetfg <f-args> containedin=ALL
+command! -nargs=1 Greenfg     windo syntax match greenfg <f-args> containedin=ALL
+command! -nargs=1 GF          windo syntax match greenfg <f-args> containedin=ALL
+command! -nargs=1 Bluefg      windo syntax match bluefg <f-args> containedin=ALL
+command! -nargs=1 BF          windo syntax match bluefg <f-args> containedin=ALL
+command! -nargs=1 Greyfg      windo syntax match greyfg <f-args> containedin=ALL
+command! -nargs=1 GYF         windo syntax match greyfg <f-args> containedin=ALL
+command! -nargs=1 Brownfg     windo syntax match brownfg <f-args> containedin=ALL
+command! -nargs=1 BRF         windo syntax match brownfg <f-args> containedin=ALL
+command! -nargs=1 Cyanfg      windo syntax match cyanfg <f-args> containedin=ALL
+command! -nargs=1 CF          windo syntax match cyanfg <f-args> containedin=ALL
+command! -nargs=1 Whitefg     windo syntax match whitefg <f-args> containedin=ALL
+command! -nargs=1 WF          windo syntax match whitefg <f-args> containedin=ALL
 
-command! -nargs=1 YA          windo call syntaxmatch#doInAllBuffers('syntax match yellow /' . <f-args> . '/')
-command! -nargs=1 RA          windo call syntaxmatch#doInAllBuffers('syntax match red /' . <f-args> . '/')
-command! -nargs=1 OA          windo call syntaxmatch#doInAllBuffers('syntax match orange /' . <f-args> . '/')
-command! -nargs=1 GA          windo call syntaxmatch#doInAllBuffers('syntax match green /' . <f-args> . '/')
-command! -nargs=1 BA          windo call syntaxmatch#doInAllBuffers('syntax match blue /' . <f-args> . '/')
-command! -nargs=1 GYA         windo call syntaxmatch#doInAllBuffers('syntax match grey /' . <f-args> . '/')
-command! -nargs=1 CA          windo call syntaxmatch#doInAllBuffers('syntax match cyan /' . <f-args> . '/')
-command! -nargs=1 BRA         windo call syntaxmatch#doInAllBuffers('syntax match brown /' . <f-args> . '/')
-command! -nargs=1 WA          windo call syntaxmatch#doInAllBuffers('syntax match white /' . <f-args> . '/')
+command! -nargs=1 YA          windo call syntaxmatch#doInAllBuffers('syntax match yellow /' . <f-args> . '/ containedin=ALL')
+command! -nargs=1 RA          windo call syntaxmatch#doInAllBuffers('syntax match red /' . <f-args> . '/ containedin=ALL')
+command! -nargs=1 OA          windo call syntaxmatch#doInAllBuffers('syntax match orange /' . <f-args> . '/ containedin=ALL')
+command! -nargs=1 GA          windo call syntaxmatch#doInAllBuffers('syntax match green /' . <f-args> . '/ containedin=ALL')
+command! -nargs=1 BA          windo call syntaxmatch#doInAllBuffers('syntax match blue /' . <f-args> . '/ containedin=ALL')
+command! -nargs=1 GYA         windo call syntaxmatch#doInAllBuffers('syntax match grey /' . <f-args> . '/ containedin=ALL')
+command! -nargs=1 CA          windo call syntaxmatch#doInAllBuffers('syntax match cyan /' . <f-args> . '/ containedin=ALL')
+command! -nargs=1 BRA         windo call syntaxmatch#doInAllBuffers('syntax match brown /' . <f-args> . '/ containedin=ALL')
+command! -nargs=1 WA          windo call syntaxmatch#doInAllBuffers('syntax match white /' . <f-args> . '/ containedin=ALL')
  
 command! -nargs=0 SyntaxClearAll    windo call syntaxmatch#doInAllBuffers('syntax clear')
 command! ClearAllSyntax             SyntaxClearAll
