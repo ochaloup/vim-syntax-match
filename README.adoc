@@ -142,6 +142,9 @@ You can write only `:Yellow pattern`. Or more abbreviated only `:Y pattern`.
 |Brown    |BR  |`:BR pattern`  |`:syn match brown /pattern/`
 |Cyan     |C   |`:C pattern`   |`:syn match cyan /pattern/`
 |White    |W   |`:W pattern`   |`:syn match white /pattern/`
+|Pink     |P   |`:P pattern`   |`:syn match pink /pattern/`
+|Pink2    |P2  |`:P2 pattern`  |`:syn match pink2 /pattern/`
+|Pink3    |P3  |`:P3 pattern`  |`:syn match pink3 /pattern/`
 |Whitefg  |WF  |`:WF pattern`  |`:syn match whitefg /pattern/`
 |Cyanfg   |CF  |`:CYF pattern` |`:syn match cyanfg /pattern/`
 |Brownfg  |BRF |`:BRF pattern` |`:syn match brownfg /pattern/`
@@ -152,6 +155,7 @@ You can write only `:Yellow pattern`. Or more abbreviated only `:Y pattern`.
 |Orangefg |OF  |`:OF pattern`  |`:syn match orangefg /pattern/`
 |Redfg    |RF  |`:RF pattern`  |`:syn match redfg  /pattern/`
 |Yellowfg |YF  |`:YF pattern`  |`:syn match yellowfg  /pattern/`
+|Pinkfg   |PF  |`:PF pattern`  |`:syn match pinkfg  /pattern/`
 |         |YA  |`:YA pattern`  |`:syn match yellow  /pattern/` in all opened buffers
 |         |RA  |`:RA pattern`  |`:syn match red /pattern/` in all opened buffers
 |         |GA  |`:GA pattern`  |`:syn match green /pattern/` in all opened buffers
@@ -160,6 +164,7 @@ You can write only `:Yellow pattern`. Or more abbreviated only `:Y pattern`.
 |         |BRA |`:BRA pattern` |`:syn match brown /pattern/` in all opened buffers
 |         |CA  |`:CA pattern`  |`:syn match cyan /pattern/` in all opened buffers
 |         |WA  |`:WA pattern`  |`:syn match white /pattern/` in all opened buffers
+|         |PA  |`:PA pattern`  |`:syn match pink /pattern/` in all opened buffers
 |ClearAllSyntax|SyntaxClearAll |`:clear syntax` | clearing syntax in all opened buffers
 |===
 
