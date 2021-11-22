@@ -14,6 +14,16 @@ When you close `Vim` and later open the log file again it's fine to have preserv
 . quit the file, then open it again
   * syntax is loaded from a saved syntax file and restored for you (see <<how-works-internally>>)
 
+== How to disable automatic loading
+
+When installed the syntax match auxiliary files are automatically created for `.txt` and `.log` files.
+To disable the automatic creation define in your `~/.vimrc` variable
+
+[source,vim]
+----
+" disable default behaviour for txt and log files of the syntax match plugin 
+let syntax_match_disable=1
+----
 
 == What the plugin provides
 
